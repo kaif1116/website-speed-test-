@@ -357,37 +357,47 @@
         
         /* ===== HERO SECTION ===== */
         .hero {
-            padding: 6rem 0;
+            padding: 4rem 0;
             background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
             text-align: center;
         }
         
         .hero h1 {
-            margin-bottom: 1.5rem;
-            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
         }
         
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             max-width: 700px;
             margin: 0 auto 2rem;
             color: var(--text-secondary);
         }
         
-        /* ===== SPEED TEST TOOL ===== */
-        .speed-test-section {
-            padding: 4rem 0;
-            background-color: var(--bg-secondary);
+        /* ===== MAIN TOOL ON HOMEPAGE ===== */
+        .main-tool-section {
+            padding: 2rem 0 4rem;
+            background-color: var(--bg-primary);
         }
         
-        .test-container {
+        .main-tool-container {
             background-color: var(--bg-card);
             border-radius: var(--radius-xl);
             padding: 2.5rem;
             box-shadow: var(--shadow-xl);
-            margin-top: -100px;
-            position: relative;
-            z-index: 10;
+            border: 1px solid var(--border-color);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .tool-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tool-header h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
         }
         
         .test-input-container {
@@ -602,9 +612,9 @@
         .affiliate-section {
             background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
             color: white;
-            border-radius: var(--radius-xl);
-            padding: 3rem;
-            margin: 3rem 0;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
             text-align: center;
         }
         
@@ -613,10 +623,54 @@
         }
         
         .affiliate-logo {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             margin-bottom: 1rem;
             color: white;
+        }
+        
+        /* ===== MULTI-TOOL EXPANSION SECTION ===== */
+        .tools-section {
+            background-color: var(--bg-secondary);
+            padding: 4rem 0;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .tool-card {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .tool-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-top: 1rem;
         }
         
         /* ===== CONTENT SECTIONS ===== */
@@ -811,16 +865,6 @@
             color: white;
         }
         
-        /* ===== PAGE NAVIGATION ===== */
-        .page {
-            display: none;
-        }
-        
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
         /* ===== TRUST BADGES ===== */
         .trust-badges {
             display: flex;
@@ -842,13 +886,25 @@
             color: var(--primary-color);
         }
         
+        /* ===== ERROR MESSAGES ===== */
+        .error-message {
+            display: none;
+            background-color: rgba(220, 38, 38, 0.1);
+            border: 1px solid var(--danger-color);
+            color: var(--danger-color);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 992px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
             
             .hero h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
             
             .test-input-container {
@@ -878,9 +934,8 @@
                 display: block;
             }
             
-            .test-container {
+            .main-tool-container {
                 padding: 1.5rem;
-                margin-top: -50px;
             }
             
             section {
@@ -888,7 +943,11 @@
             }
             
             .affiliate-section {
-                padding: 2rem;
+                padding: 1.5rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
         }
         
@@ -897,15 +956,19 @@
             h2 { font-size: 1.75rem; }
             
             .hero {
-                padding: 4rem 0;
+                padding: 3rem 0;
             }
             
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             
             .content-card {
                 padding: 1.5rem;
+            }
+            
+            .tool-header h2 {
+                font-size: 1.5rem;
             }
         }
         
@@ -940,8 +1003,8 @@
                 </a>
                 
                 <div class="nav-links">
-                    <a href="#" class="nav-link active" data-page="home">Home</a>
-                    <a href="#" class="nav-link" data-page="speed-test">Speed Test</a>
+                    <a href="#main-tool" class="nav-link active">Speed Test</a>
+                    <a href="#other-tools" class="nav-link">Other Tools</a>
                     <a href="#" class="nav-link" data-page="about">About</a>
                     <a href="#" class="nav-link" data-page="faq">FAQ</a>
                     <a href="#" class="nav-link" data-page="contact">Contact</a>
@@ -959,12 +1022,13 @@
 
     <!-- Main Content -->
     <main id="mainContent">
-        <!-- Home Page -->
+        <!-- Home Page with Main Tool -->
         <div class="page active" id="home">
+            <!-- Hero Section -->
             <section class="hero">
                 <div class="container">
                     <h1>Test Your Website Speed Instantly</h1>
-                    <p>Get detailed performance analysis, Core Web Vitals metrics, and actionable optimization recommendations to improve your site's loading speed and user experience. Our free tool helps you understand and enhance your website performance.</p>
+                    <p>Free website speed test with Core Web Vitals analysis. Get performance scores and actionable optimization tips in seconds.</p>
                     <div class="trust-badges">
                         <div class="badge">
                             <div class="badge-icon">✓</div>
@@ -972,131 +1036,39 @@
                         </div>
                         <div class="badge">
                             <div class="badge-icon">⚡</div>
-                            <span>Instant Results</span>
+                            <span>No Signup Needed</span>
                         </div>
                         <div class="badge">
                             <div class="badge-icon">🛡️</div>
-                            <span>No Signup Required</span>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-primary btn-lg" data-page="speed-test">
-                        Start Free Test Now
-                    </a>
-                </div>
-            </section>
-
-            <!-- Ad Slot 1 -->
-            <div class="container">
-                <div class="ad-slot">
-                    <span class="ad-label">Advertisement</span>
-                    AdSense Ad Slot 1 (728x90)
-                </div>
-            </div>
-
-            <section class="content-section">
-                <div class="container">
-                    <div class="content-card">
-                        <h2>Why Website Speed Matters for Your Success</h2>
-                        <p>In today's competitive digital landscape, website speed is no longer just a technical metric—it's a critical business factor that directly impacts user experience, search engine rankings, and conversion rates. Studies show that pages loading within 2 seconds have average bounce rates below 9%, while pages taking 5 seconds see bounce rates skyrocket to 38%.</p>
-                        
-                        <h3>The Google Factor: Core Web Vitals & SEO</h3>
-                        <p>Google has explicitly confirmed that page speed is a ranking factor for both desktop and mobile searches. With the introduction of Core Web Vitals, website performance has become even more crucial for SEO success. These user-centric metrics measure real-world experience, focusing on loading performance (LCP), interactivity (INP), and visual stability (CLS). Websites that excel in these areas receive preferential treatment in search results, driving more organic traffic and visibility.</p>
-                        
-                        <h3>Business Impact: From Loading Times to Revenue</h3>
-                        <p>Every second of delay in page load time can have significant financial consequences. Research indicates that a 1-second delay can reduce conversions by 7%, decrease page views by 11%, and damage customer satisfaction. For e-commerce sites, this translates directly to lost revenue. Mobile users are particularly sensitive to performance issues, with 53% of visitors abandoning sites that take longer than 3 seconds to load.</p>
-                        
-                        <h3>Comprehensive Performance Analysis</h3>
-                        <p>Our Website Speed Test Tool provides more than just basic loading times. We analyze multiple dimensions of performance including:</p>
-                        
-                        <ul>
-                            <li><strong>Core Web Vitals Analysis:</strong> Largest Contentful Paint (LCP), Cumulative Layout Shift (CLS), and Interaction to Next Paint (INP)</li>
-                            <li><strong>Technical Performance Metrics:</strong> Time to First Byte (TTFB), First Contentful Paint (FCP), Total Blocking Time (TBT)</li>
-                            <li><strong>Resource Optimization Analysis:</strong> Image compression, JavaScript and CSS delivery efficiency, caching effectiveness</li>
-                            <li><strong>Mobile-Specific Performance:</strong> Separate analysis for mobile devices with tailored recommendations</li>
-                            <li><strong>Global Performance Testing:</strong> Analysis from multiple geographic locations</li>
-                        </ul>
-                        
-                        <p>By understanding these metrics and implementing our tailored recommendations, you can significantly improve your website's performance, leading to better user engagement, higher search rankings, and increased revenue potential.</p>
-                    </div>
-                    
-                    <!-- Ad Slot 2 -->
-                    <div class="ad-slot">
-                        <span class="ad-label">Advertisement</span>
-                        AdSense Ad Slot 2 (300x250)
-                    </div>
-                    
-                    <div class="content-card">
-                        <h2>How Our Speed Test Tool Works</h2>
-                        <p>Our advanced testing infrastructure simulates real-user conditions from multiple locations worldwide. When you test your website, we collect data from both desktop and mobile perspectives, giving you a complete picture of your site's performance across different devices and connection speeds.</p>
-                        
-                        <h3>Step-by-Step Analysis Process</h3>
-                        <p>The testing process follows a systematic, professional approach:</p>
-                        
-                        <ol>
-                            <li><strong>URL Validation & Connection:</strong> We verify the website URL and establish a secure connection to your server</li>
-                            <li><strong>Initial Server Response Measurement:</strong> Measuring Time to First Byte (TTFB) to assess server response time and hosting quality</li>
-                            <li><strong>Resource Loading Analysis:</strong> Analyzing how CSS, JavaScript, images, fonts, and other assets load and render</li>
-                            <li><strong>Rendering Timeline Tracking:</strong> Monitoring when content becomes visible and interactive to users</li>
-                            <li><strong>Core Web Vitals Calculation:</strong> Computing LCP, CLS, and INP based on real user experience metrics</li>
-                            <li><strong>Comprehensive Performance Scoring:</strong> Generating an overall score based on multiple weighted factors</li>
-                            <li><strong>Actionable Recommendation Generation:</strong> Creating specific optimization suggestions tailored to your website</li>
-                        </ol>
-                        
-                        <h3>Actionable, Specific Recommendations</h3>
-                        <p>Unlike basic speed tests that only provide scores, we deliver specific, actionable recommendations tailored to your website's unique performance profile. Each suggestion includes implementation guidance, estimated impact, and priority level, allowing you to effectively optimize your website based on the biggest opportunities for improvement.</p>
-                        
-                        <div class="mt-4">
-                            <a href="#" class="btn btn-primary" data-page="speed-test">Try Our Speed Test Tool</a>
-                        </div>
-                    </div>
-                    
-                    <div class="content-card">
-                        <h2>Monetization Opportunities with Speed Testing</h2>
-                        <p>Website speed testing presents excellent opportunities for ethical, Shariah-compliant monetization. Here are legitimate ways you can earn while providing value:</p>
-                        
-                        <h3>Affiliate Marketing with Trusted Partners</h3>
-                        <p>We partner with reputable hosting companies like Bluehost to recommend quality services that genuinely improve website performance. When users benefit from our recommendations and choose to upgrade their hosting, we may receive a modest commission—at no extra cost to them. This creates a win-win situation where users get better hosting, and we receive support to maintain our free tools.</p>
-                        
-                        <h3>AdSense Revenue for Sustainable Operations</h3>
-                        <p>Displaying relevant, non-intrusive advertisements through Google AdSense allows us to keep our tools completely free for users. We carefully select ad placements that don't disrupt the user experience while providing useful information about relevant products and services.</p>
-                        
-                        <h3>Premium Features for Advanced Users</h3>
-                        <p>While our core speed test remains free forever, we offer premium features for businesses and professionals who need advanced capabilities like API access, scheduled testing, team collaboration, and detailed historical reporting.</p>
-                        
-                        <div class="optimization-tips mt-4">
-                            <h3 class="text-center">Start Your Own Speed Test Website</h3>
-                            <p class="text-center">Interested in creating your own speed test tool? We offer white-label solutions and partnership opportunities for qualified developers and marketers.</p>
-                            <div class="text-center mt-3">
-                                <a href="#" class="btn btn-secondary" data-page="contact">Contact for Partnership</a>
-                            </div>
+                            <span>Privacy Friendly</span>
                         </div>
                     </div>
                 </div>
             </section>
-        </div>
 
-        <!-- Speed Test Tool Page -->
-        <div class="page" id="speed-test">
-            <section class="hero">
+            <!-- Main Speed Test Tool (Now on Homepage) -->
+            <section class="main-tool-section" id="main-tool">
                 <div class="container">
-                    <h1>Website Speed Test Tool</h1>
-                    <p>Enter your website URL below to analyze performance, Core Web Vitals, and get optimization recommendations. Our tool tests from multiple locations and devices for accurate results.</p>
-                </div>
-            </section>
-
-            <section class="speed-test-section">
-                <div class="container">
-                    <div class="test-container">
+                    <div class="main-tool-container">
+                        <div class="tool-header">
+                            <h2>Free Website Speed Test</h2>
+                            <p>Enter your website URL to check performance, Core Web Vitals, and get optimization tips.</p>
+                        </div>
+                        
                         <div class="test-input-container">
-                            <input type="url" id="websiteUrl" class="test-input" placeholder="https://example.com" value="https://">
+                            <input type="url" id="websiteUrl" class="test-input" placeholder="example.com or https://example.com">
                             <button class="btn btn-primary btn-lg" id="startTest">Start Speed Test</button>
+                        </div>
+                        
+                        <div class="error-message" id="urlError">
+                            Please enter a valid website URL. Example: example.com or https://example.com
                         </div>
                         
                         <div class="loading-container" id="loading">
                             <div class="spinner"></div>
                             <h3>Analyzing Website Performance</h3>
-                            <p>Testing from multiple locations and devices... This usually takes 15-30 seconds.</p>
-                            <p class="text-light mt-2"><small>Testing: Server response, resource loading, Core Web Vitals, mobile optimization</small></p>
+                            <p>Testing from multiple locations and devices...</p>
+                            <p class="text-light mt-2"><small>Checking server response, Core Web Vitals, and mobile optimization</small></p>
                         </div>
                         
                         <div class="results-container" id="results">
@@ -1105,11 +1077,11 @@
                                     <span id="performanceScore">85</span>
                                 </div>
                                 <div class="score-text" id="performanceText">Good Performance</div>
-                                <p id="performanceDescription">Your website loads faster than 85% of tested websites. There are some optimization opportunities available.</p>
+                                <p id="performanceDescription">Your website loads faster than 85% of tested websites. There are optimization opportunities available.</p>
                             </div>
                             
                             <div class="section-header">
-                                <h2>Core Web Vitals Analysis</h2>
+                                <h3>Core Web Vitals Analysis</h3>
                                 <p>Google's user experience metrics that impact SEO rankings</p>
                             </div>
                             
@@ -1149,7 +1121,7 @@
                             </div>
                             
                             <div class="section-header">
-                                <h2>Performance by Device Type</h2>
+                                <h3>Performance by Device Type</h3>
                                 <p>Different experiences across mobile and desktop devices</p>
                             </div>
                             
@@ -1179,53 +1151,51 @@
                             <div class="affiliate-section" id="affiliateSection">
                                 <div class="affiliate-logo">Bluehost</div>
                                 <h3>Optimize Your Website Hosting for Better Speed</h3>
-                                <p>Your speed test results indicate that server response time and hosting quality significantly impact your mobile performance. Many performance issues originate from slow or overloaded hosting servers.</p>
-                                
-                                <p><strong>Bluehost offers optimized hosting solutions specifically engineered for speed and reliability:</strong></p>
+                                <p>Your speed test shows opportunities to improve server response time. Many performance issues start with hosting quality.</p>
                                 
                                 <div class="tips-grid mt-3">
                                     <div class="tip-card">
                                         <div class="tip-icon">⚡</div>
                                         <div>
                                             <h5>Built-in Caching</h5>
-                                            <p>Automatic caching systems for faster page loading</p>
+                                            <p>Automatic caching for faster loading</p>
                                         </div>
                                     </div>
                                     <div class="tip-card">
                                         <div class="tip-icon">🌐</div>
                                         <div>
-                                            <h5>Free CDN Integration</h5>
-                                            <p>Global content delivery network included</p>
+                                            <h5>Free CDN</h5>
+                                            <p>Global content delivery network</p>
                                         </div>
                                     </div>
                                     <div class="tip-card">
                                         <div class="tip-icon">💾</div>
                                         <div>
                                             <h5>SSD Storage</h5>
-                                            <p>Faster read/write speeds for improved performance</p>
+                                            <p>Faster read/write speeds</p>
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <p class="mt-3">Improve your website speed significantly with hosting designed for optimal performance. Better hosting can often improve load times by 50% or more.</p>
+                                <p class="mt-3">Better hosting can improve load times significantly. Consider upgrading for optimal performance.</p>
                                 
                                 <div class="mt-4">
                                     <a href="https://www.bluehost.com/affiliates?utm_source=speedtestpro&utm_medium=referral&utm_campaign=speed_test_tool" 
                                        class="btn btn-primary btn-lg" 
                                        target="_blank" 
                                        rel="nofollow">
-                                        Explore Bluehost Hosting Plans
+                                        Explore Bluehost Plans
                                     </a>
                                 </div>
                                 
                                 <p class="mt-3" style="font-size: 0.875rem; opacity: 0.9;">
-                                    <strong>Transparency Note:</strong> We may earn a commission if you choose to upgrade through our link, at no extra cost to you. This helps support our free tools and continued development.
+                                    <strong>Transparency:</strong> We may earn a commission if you choose to upgrade through our link, at no extra cost to you. This supports our free tools.
                                 </p>
                             </div>
                             
                             <div class="optimization-tips">
                                 <div class="section-header">
-                                    <h2>Optimization Recommendations</h2>
+                                    <h3>Optimization Recommendations</h3>
                                     <p>Actionable tips to improve your website performance</p>
                                 </div>
                                 
@@ -1234,7 +1204,7 @@
                                 </div>
                                 
                                 <div class="mt-4 text-center">
-                                    <p><strong>Transparency Notice:</strong> Results shown are estimated and for informational purposes only. Actual website performance may vary based on real-world conditions, user location, device capabilities, and network fluctuations.</p>
+                                    <p><strong>Transparency Note:</strong> Results shown are estimated and for informational purposes. Actual website performance may vary based on real-world conditions.</p>
                                 </div>
                             </div>
                             
@@ -1242,44 +1212,140 @@
                                 <button class="btn btn-outline" id="runNewTest">
                                     <span>🔄</span> Test Another Website
                                 </button>
-                                <button class="btn btn-secondary" id="shareResults">
-                                    <span>📤</span> Share These Results
-                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other Free Tools Section -->
+            <section class="tools-section" id="other-tools">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Other Free Tools You Might Like</h2>
+                        <p>Helpful tools for bloggers, freelancers, and small businesses</p>
+                    </div>
+                    
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-icon">🔍</div>
+                            <h3>SEO Analyzer</h3>
+                            <p>Check your website's SEO health and get improvement suggestions</p>
+                            <span class="tool-badge">Coming Soon</span>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-icon">📝</div>
+                            <h3>Content Planner</h3>
+                            <p>Plan and organize your content calendar for better results</p>
+                            <span class="tool-badge">Coming Soon</span>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-icon">💼</div>
+                            <h3>Freelance Rate Calculator</h3>
+                            <p>Calculate optimal freelance rates for global markets</p>
+                            <a href="https://kaif1116.github.io/Freelance-Rate-Calculator-/" class="tool-badge" target="_blank">Try Tool</a>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-icon">🚀</div>
+                            <h3>Website Launch Checklist</h3>
+                            <p>Step-by-step checklist for launching websites successfully</p>
+                            <span class="tool-badge">Coming Soon</span>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-icon">📊</div>
+                            <h3>Keyword Research Tool</h3>
+                            <p>Find profitable keywords with search volume and competition data</p>
+                            <span class="tool-badge">Coming Soon</span>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-icon">🔄</div>
+                            <h3>Content Repurposer</h3>
+                            <p>Transform content into multiple formats for different platforms</p>
+                            <a href="https://kaif1116.github.io/content-repurposer/" class="tool-badge" target="_blank">Try Tool</a>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-icon">🎯</div>
+                            <h3>Name Generator</h3>
+                            <p>Generate names for brands, products, and projects</p>
+                            <a href="https://kaif1116.github.io/multi-name-generator-2026/" class="tool-badge" target="_blank">Try Tool</a>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-icon">🔧</div>
+                            <h3>Website Health Check</h3>
+                            <p>Comprehensive check for technical issues and security</p>
+                            <span class="tool-badge">Coming Soon</span>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-icon">📈</div>
+                            <h3>ROI Calculator</h3>
+                            <p>Calculate return on investment for marketing campaigns</p>
+                            <span class="tool-badge">Coming Soon</span>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-icon">🌐</div>
+                            <h3>Domain Availability Checker</h3>
+                            <p>Check if your desired domain name is available</p>
+                            <span class="tool-badge">Coming Soon</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEO Content Section -->
+            <section class="content-section">
+                <div class="container">
+                    <div class="content-card">
+                        <h2>Why Website Speed Matters for Your Online Success</h2>
+                        <p>Website speed is more than just a technical metric—it directly impacts user experience, search engine rankings, and business results. In today's fast-paced digital world, users expect websites to load quickly, and search engines reward those that deliver great performance.</p>
+                        
+                        <h3>Impact on User Experience</h3>
+                        <p>Studies show that 53% of mobile visitors leave a website if it takes longer than 3 seconds to load. Every second of delay can reduce conversions by 7%. Fast-loading websites provide better user experiences, leading to longer sessions, lower bounce rates, and higher engagement.</p>
+                        
+                        <h3>SEO and Search Rankings</h3>
+                        <p>Google considers page speed as a ranking factor for both desktop and mobile searches. With Core Web Vitals now part of Google's page experience signals, website performance has become even more critical for SEO success. Websites that perform well in these metrics receive preferential treatment in search results.</p>
+                        
+                        <h3>Business Results and Revenue</h3>
+                        <p>Faster websites don't just rank better—they convert better. Improved loading times lead to higher customer satisfaction, increased sales, and better overall business performance. Whether you're running a blog, e-commerce store, or business website, speed optimization should be a priority.</p>
+                        
+                        <div class="optimization-tips mt-4">
+                            <h3 class="text-center">Ready to Improve Your Website?</h3>
+                            <p class="text-center">Start with our free speed test tool above. Get specific recommendations tailored to your website's performance profile.</p>
+                            <div class="text-center mt-3">
+                                <a href="#main-tool" class="btn btn-primary">Test Your Website Speed</a>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Ad Slot 3 -->
-                    <div class="container mt-5">
-                        <div class="ad-slot">
-                            <span class="ad-label">Advertisement</span>
-                            AdSense Ad Slot 3 (728x90)
-                        </div>
+                    <!-- Ad Slot -->
+                    <div class="ad-slot">
+                        <span class="ad-label">Advertisement</span>
+                        AdSense Ad Slot (728x90)
                     </div>
                     
-                    <div class="content-card mt-5">
-                        <h2>Understanding Your Speed Test Results</h2>
-                        <p>Correctly interpreting your website speed test results is crucial for effective optimization. Here's what each metric means and why it matters for your website's success.</p>
+                    <div class="content-card">
+                        <h2>How Our Speed Test Tool Helps You</h2>
+                        <p>Our tool provides more than just speed measurements. We give you actionable insights to improve your website's performance.</p>
                         
-                        <h3>Performance Score (0-100 Scale)</h3>
-                        <p>Your overall performance score combines multiple weighted factors including loading speed, interactivity, visual stability, and technical optimizations. Scores are categorized as:</p>
+                        <h3>Core Web Vitals Analysis</h3>
+                        <p>We analyze Google's Core Web Vitals—LCP (loading performance), CLS (visual stability), and INP (responsiveness). These metrics are crucial for both user experience and SEO rankings. Understanding where your website stands helps you prioritize optimization efforts.</p>
                         
-                        <ul>
-                            <li><strong>90-100 (Excellent):</strong> Your website performs better than 90% of tested sites. Minimal optimization needed.</li>
-                            <li><strong>70-89 (Good):</strong> Solid performance with some optimization opportunities available.</li>
-                            <li><strong>50-69 (Needs Improvement):</strong> Significant optimization work required for better user experience and SEO.</li>
-                            <li><strong>0-49 (Poor):</strong> Immediate optimization required. User experience is likely negatively impacted.</li>
-                        </ul>
+                        <h3>Mobile vs Desktop Performance</h3>
+                        <p>We test both mobile and desktop performance separately. Since Google uses mobile-first indexing, mobile performance is especially important. Our tool shows you the differences and provides specific recommendations for each platform.</p>
                         
-                        <h3>Core Web Vitals Explained in Detail</h3>
-                        <p><strong>Largest Contentful Paint (LCP):</strong> Measures loading performance by tracking when the largest content element in the viewport becomes visible. To provide a good user experience, LCP should occur within 2.5 seconds of when the page first starts loading. Elements that qualify as LCP include images, video poster images, background images, and text blocks.</p>
+                        <h3>Actionable Recommendations</h3>
+                        <p>Instead of just giving you scores, we provide specific, actionable recommendations. Each suggestion includes implementation guidance and estimated impact, helping you focus on changes that will make the biggest difference.</p>
                         
-                        <p><strong>Cumulative Layout Shift (CLS):</strong> Measures visual stability by summing layout shift scores for every unexpected layout shift that occurs during the entire lifespan of a page. A layout shift occurs any time a visible element changes its position from one rendered frame to the next. To provide a good user experience, pages should maintain a CLS of 0.1 or less.</p>
-                        
-                        <p><strong>Interaction to Next Paint (INP):</strong> Measures responsiveness by observing the latency of all interactions a user has with a page. The final INP value is the longest interaction observed. For a good user experience, pages should have an INP of 200 milliseconds or less.</p>
-                        
-                        <h3>Mobile vs. Desktop Performance Differences</h3>
-                        <p>Mobile devices typically have slower processors, less memory, and use cellular networks with higher latency than desktop computers. Mobile browsers also have different rendering engines and capabilities. This is why Google uses mobile-first indexing and why optimizing for mobile performance is critical. A significant gap between mobile and desktop scores indicates specific optimization opportunities for mobile users.</p>
+                        <h3>Global Testing Perspective</h3>
+                        <p>Our testing simulates real-world conditions from different geographic locations. This gives you a better understanding of how users around the world experience your website.</p>
                     </div>
                 </div>
             </section>
@@ -1290,424 +1356,25 @@
             <section class="hero">
                 <div class="container">
                     <h1>About SpeedTest Pro</h1>
-                    <p>Learn about our mission, methodology, and commitment to helping website owners improve their online performance through ethical, Shariah-compliant practices.</p>
+                    <p>Learn about our mission and commitment to helping website owners improve performance.</p>
                 </div>
             </section>
 
             <section class="content-section">
                 <div class="container">
                     <div class="content-card">
-                        <h2>Our Mission & Values</h2>
-                        <p>At SpeedTest Pro, our mission is to democratize website performance optimization by providing free, accessible tools and educational resources built on principles of transparency and ethical monetization. We believe that every website owner—from individual bloggers to large enterprises—should have access to professional-grade performance analysis without the complexity and cost of enterprise solutions.</p>
+                        <h2>Our Mission</h2>
+                        <p>We provide free, accessible tools to help website owners understand and improve their online performance. Our goal is to make professional-grade performance analysis available to everyone.</p>
                         
-                        <p>Founded with a commitment to Shariah-compliant business practices, we operate on principles of fairness, transparency, and mutual benefit. All our monetization methods are designed to provide genuine value to users while maintaining ethical standards. We reject exploitative practices and focus on creating win-win scenarios where users receive valuable tools and recommendations.</p>
+                        <h3>Transparency and Trust</h3>
+                        <p>We believe in clear communication and ethical practices. All our recommendations are based on performance analysis, and we're transparent about our affiliate relationships.</p>
                         
-                        <h3>Our Development Philosophy</h3>
-                        <p>We develop tools that solve real problems for real people. Our team includes web performance experts, SEO specialists, and user experience designers who understand the challenges website owners face. We're proud to have helped over 50,000 website owners improve their loading times, enhance user experience, and boost their search engine rankings.</p>
+                        <h3>Global Accessibility</h3>
+                        <p>Our tools are designed to work for users worldwide. We use simple, clear English and avoid region-specific assumptions.</p>
                         
-                        <h2>Our Testing Methodology</h2>
-                        <p>We employ a sophisticated testing infrastructure that simulates real-world user conditions across different geographical locations, devices, and network speeds. Our testing methodology follows industry best practices and aligns with Google's Core Web Vitals measurement standards.</p>
-                        
-                        <h3>Global Testing Infrastructure</h3>
-                        <p>Our testing network includes locations in North America, Europe, Asia, and Australia. We test from both desktop and mobile perspectives, using actual devices (not just emulators) to ensure accuracy. Each test measures multiple page loads to account for caching and network variability, providing a comprehensive view of performance.</p>
-                        
-                        <h3>Comprehensive Performance Metrics</h3>
-                        <p>We analyze over 50 different performance metrics, focusing on those that most directly impact user experience and business outcomes. Our scoring algorithm weights metrics based on their proven impact on conversion rates and user satisfaction, ensuring our recommendations address the most critical issues first.</p>
-                        
-                        <h2>Why Trust Our Results?</h2>
-                        <p>Unlike many free speed test tools that provide limited or inaccurate data, we're committed to transparency and accuracy:</p>
-                        
-                        <ul>
-                            <li><strong>No Sampling Bias:</strong> We test your actual pages, not just homepages</li>
-                            <li><strong>Real Device Testing:</strong> We use actual mobile devices for mobile performance testing</li>
-                            <li><strong>Multiple Test Runs:</strong> Each test includes multiple runs to ensure consistency and accuracy</li>
-                            <li><strong>Comprehensive Analysis:</strong> We test both cached and uncached performance scenarios</li>
-                            <li><strong>Actionable Insights:</strong> We provide specific, prioritized recommendations, not just scores</li>
-                            <li><strong>Transparent Methodology:</strong> We clearly explain how we test and what each metric means</li>
-                        </ul>
-                        
-                        <h2>Ethical Monetization & Partnerships</h2>
-                        <p>We maintain strict editorial independence—our recommendations are based solely on performance testing results and user value, not commission rates. Our affiliate relationships allow us to keep our tools free while recommending services we've tested and verified. We only promote products and services that we genuinely believe provide value to our users.</p>
-                        
-                        <p>Our Shariah-compliant approach ensures that all monetization methods are transparent, fair, and mutually beneficial. We clearly disclose all affiliate relationships and never compromise the accuracy of our tests for commercial considerations.</p>
-                        
-                        <h2>Meet Our Other Tools</h2>
-                        <p>We develop various tools to help creators and businesses succeed online. Check out our other projects:</p>
-                        
-                        <div class="tips-grid mt-3">
-                            <div class="tip-card">
-                                <div class="tip-icon">💰</div>
-                                <div>
-                                    <h5><a href="https://kaif1116.github.io/Freelance-Rate-Calculator-/" target="_blank">Freelance Rate Calculator</a></h5>
-                                    <p>Calculate optimal freelance rates for global markets</p>
-                                </div>
-                            </div>
-                            <div class="tip-card">
-                                <div class="tip-icon">🎯</div>
-                                <div>
-                                    <h5><a href="https://kaif1116.github.io/multi-name-generator-2026/" target="_blank">Multi Name Generator</a></h5>
-                                    <p>Generate names for pets, babies, brands, and channels</p>
-                                </div>
-                            </div>
-                            <div class="tip-card">
-                                <div class="tip-icon">🔄</div>
-                                <div>
-                                    <h5><a href="https://kaif1116.github.io/content-repurposer/" target="_blank">Content Repurposer</a></h5>
-                                    <p>Transform content into multiple formats instantly</p>
-                                </div>
-                            </div>
+                        <div class="mt-4">
+                            <a href="#main-tool" class="btn btn-primary">Try Our Speed Test Tool</a>
                         </div>
-                        
-                        <div class="optimization-tips mt-4">
-                            <h3 class="text-center">Join Our Community</h3>
-                            <p class="text-center">We're building a community of ethical website owners and developers focused on performance optimization and sustainable online business.</p>
-                            <div class="text-center mt-3">
-                                <a href="#" class="btn btn-primary" data-page="contact">Get Involved</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Privacy Policy Page -->
-        <div class="page" id="privacy">
-            <section class="hero">
-                <div class="container">
-                    <h1>Privacy Policy</h1>
-                    <p>Your privacy is important to us. Learn how we collect, use, and protect your information.</p>
-                </div>
-            </section>
-
-            <section class="content-section">
-                <div class="container">
-                    <div class="content-card">
-                        <h2>Privacy Policy for SpeedTest Pro</h2>
-                        <p><strong>Effective Date:</strong> December 25, 2024</p>
-                        <p><strong>Last Updated:</strong> December 25, 2024</p>
-                        
-                        <p>This Privacy Policy describes our policies and procedures on the collection, use, and disclosure of your information when you use our Service and tells you about your privacy rights and how the law protects you.</p>
-                        
-                        <p>We use your Personal Data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
-                        
-                        <h3>Interpretation and Definitions</h3>
-                        
-                        <h4>Definitions</h4>
-                        <p>For the purposes of this Privacy Policy:</p>
-                        
-                        <ul>
-                            <li><strong>Account</strong> means a unique account created for you to access our Service or parts of our Service.</li>
-                            <li><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party.</li>
-                            <li><strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to SpeedTest Pro.</li>
-                            <li><strong>Cookies</strong> are small files that are placed on your computer, mobile device, or any other device by a website, containing details of your browsing history.</li>
-                            <li><strong>Country</strong> refers to: United States</li>
-                            <li><strong>Device</strong> means any device that can access the Service such as a computer, a cellphone, or a digital tablet.</li>
-                            <li><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</li>
-                            <li><strong>Service</strong> refers to the Website.</li>
-                            <li><strong>Service Provider</strong> means any natural or legal person who processes the data on behalf of the Company.</li>
-                            <li><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself.</li>
-                            <li><strong>Website</strong> refers to SpeedTest Pro, accessible from https://speedtestpro.tools</li>
-                            <li><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service.</li>
-                        </ul>
-                        
-                        <h3>Collecting and Using Your Personal Data</h3>
-                        
-                        <h4>Types of Data Collected</h4>
-                        
-                        <h5>Personal Data</h5>
-                        <p>While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to:</p>
-                        
-                        <ul>
-                            <li>Email address</li>
-                            <li>First name and last name</li>
-                            <li>Usage Data</li>
-                        </ul>
-                        
-                        <h5>Usage Data</h5>
-                        <p>Usage Data is collected automatically when using the Service.</p>
-                        <p>Usage Data may include information such as your Device's Internet Protocol address (e.g., IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers, and other diagnostic data.</p>
-                        
-                        <h5>Tracking Technologies and Cookies</h5>
-                        <p>We use Cookies and similar tracking technologies to track the activity on our Service and store certain information. The technologies we use may include:</p>
-                        
-                        <ul>
-                            <li><strong>Cookies or Browser Cookies.</strong> A cookie is a small file placed on your Device.</li>
-                            <li><strong>Web Beacons.</strong> Certain sections of our Service and our emails may contain small electronic files known as web beacons.</li>
-                        </ul>
-                        
-                        <p>Cookies can be "Persistent" or "Session" Cookies. Persistent Cookies remain on your personal computer or mobile device when you go offline, while Session Cookies are deleted as soon as you close your web browser.</p>
-                        
-                        <p>We use both Session and Persistent Cookies for the purposes set out below:</p>
-                        
-                        <ul>
-                            <li><strong>Necessary / Essential Cookies</strong>
-                                <p>Type: Session Cookies</p>
-                                <p>Administered by: Us</p>
-                                <p>Purpose: These Cookies are essential to provide you with services available through the Website and to enable you to use some of its features.</p>
-                            </li>
-                            <li><strong>Cookies Policy / Notice Acceptance Cookies</strong>
-                                <p>Type: Persistent Cookies</p>
-                                <p>Administered by: Us</p>
-                                <p>Purpose: These Cookies identify if users have accepted the use of cookies on the Website.</p>
-                            </li>
-                            <li><strong>Functionality Cookies</strong>
-                                <p>Type: Persistent Cookies</p>
-                                <p>Administered by: Us</p>
-                                <p>Purpose: These Cookies allow us to remember choices you make when you use the Website.</p>
-                            </li>
-                        </ul>
-                        
-                        <h3>Use of Your Personal Data</h3>
-                        <p>The Company may use Personal Data for the following purposes:</p>
-                        
-                        <ul>
-                            <li><strong>To provide and maintain our Service</strong>, including to monitor the usage of our Service.</li>
-                            <li><strong>To manage Your Account:</strong> to manage your registration as a user of the Service.</li>
-                            <li><strong>For the performance of a contract:</strong> the development, compliance and undertaking of the purchase contract for the products, items, or services you have purchased.</li>
-                            <li><strong>To contact You:</strong> To contact you by email, telephone calls, SMS, or other equivalent forms of electronic communication.</li>
-                            <li><strong>To provide you</strong> with news, special offers, and general information about other goods, services, and events which we offer.</li>
-                            <li><strong>To manage your requests:</strong> To attend and manage your requests to us.</li>
-                        </ul>
-                        
-                        <h3>Retention of Your Personal Data</h3>
-                        <p>The Company will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations, resolve disputes, and enforce our legal agreements and policies.</p>
-                        
-                        <h3>Transfer of Your Personal Data</h3>
-                        <p>Your information, including Personal Data, is processed at the Company's operating offices and in any other places where the parties involved in the processing are located. It means that this information may be transferred to — and maintained on — computers located outside of your state, province, country, or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction.</p>
-                        
-                        <h3>Delete Your Personal Data</h3>
-                        <p>You have the right to delete or request that we assist in deleting the Personal Data that we have collected about you. Our Service may give you the ability to delete certain information about you from within the Service.</p>
-                        
-                        <p>You may update, amend, or delete your information at any time by contacting us. Please note, however, that we may need to retain certain information when we have a legal obligation or lawful basis to do so.</p>
-                        
-                        <h3>Disclosure of Your Personal Data</h3>
-                        
-                        <h4>Business Transactions</h4>
-                        <p>If the Company is involved in a merger, acquisition, or asset sale, your Personal Data may be transferred. We will provide notice before your Personal Data is transferred and becomes subject to a different Privacy Policy.</p>
-                        
-                        <h4>Law enforcement</h4>
-                        <p>Under certain circumstances, the Company may be required to disclose your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g., a court or a government agency).</p>
-                        
-                        <h4>Other legal requirements</h4>
-                        <p>The Company may disclose your Personal Data in the good faith belief that such action is necessary to:</p>
-                        
-                        <ul>
-                            <li>Comply with a legal obligation</li>
-                            <li>Protect and defend the rights or property of the Company</li>
-                            <li>Prevent or investigate possible wrongdoing in connection with the Service</li>
-                            <li>Protect the personal safety of Users of the Service or the public</li>
-                            <li>Protect against legal liability</li>
-                        </ul>
-                        
-                        <h3>Security of Your Personal Data</h3>
-                        <p>The security of your Personal Data is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</p>
-                        
-                        <h3>Children's Privacy</h3>
-                        <p>Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If you are a parent or guardian and you are aware that your child has provided us with Personal Data, please contact us.</p>
-                        
-                        <h3>Links to Other Websites</h3>
-                        <p>Our Service may contain links to other websites that are not operated by us. If you click on a third party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit.</p>
-                        
-                        <p>We have no control over and assume no responsibility for the content, privacy policies, or practices of any third party sites or services.</p>
-                        
-                        <h3>Changes to this Privacy Policy</h3>
-                        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
-                        
-                        <p>We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the "Effective Date" at the top of this Privacy Policy.</p>
-                        
-                        <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
-                        
-                        <h3>Contact Us</h3>
-                        <p>If you have any questions about this Privacy Policy, you can contact us:</p>
-                        
-                        <ul>
-                            <li>By email: <a href="mailto:kaifabbasi1655@gmail.com">kaifabbasi1655@gmail.com</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Terms & Conditions Page -->
-        <div class="page" id="terms">
-            <section class="hero">
-                <div class="container">
-                    <h1>Terms & Conditions</h1>
-                    <p>Legal terms governing the use of our website and services.</p>
-                </div>
-            </section>
-
-            <section class="content-section">
-                <div class="container">
-                    <div class="content-card">
-                        <h2>Terms and Conditions</h2>
-                        <p><strong>Effective Date:</strong> December 25, 2024</p>
-                        
-                        <p>Please read these terms and conditions carefully before using Our Service.</p>
-                        
-                        <h3>Interpretation and Definitions</h3>
-                        
-                        <h4>Definitions</h4>
-                        <p>For the purposes of these Terms and Conditions:</p>
-                        
-                        <ul>
-                            <li><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party.</li>
-                            <li><strong>Country</strong> refers to: United States</li>
-                            <li><strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to SpeedTest Pro.</li>
-                            <li><strong>Device</strong> means any device that can access the Service such as a computer, a cellphone, or a digital tablet.</li>
-                            <li><strong>Service</strong> refers to the Website.</li>
-                            <li><strong>Terms and Conditions</strong> (also referred as "Terms") mean these Terms and Conditions that form the entire agreement between You and the Company regarding the use of the Service.</li>
-                            <li><strong>Third-party Social Media Service</strong> means any services or content provided by a third-party that may be displayed, included, or made available by the Service.</li>
-                            <li><strong>Website</strong> refers to SpeedTest Pro, accessible from https://speedtestpro.tools</li>
-                            <li><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service.</li>
-                        </ul>
-                        
-                        <h3>Acknowledgment</h3>
-                        <p>These are the Terms and Conditions governing the use of this Service and the agreement that operates between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service.</p>
-                        
-                        <p>Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users, and others who access or use the Service.</p>
-                        
-                        <p>By accessing or using the Service You agree to be bound by these Terms and Conditions. If You disagree with any part of these Terms and Conditions then You may not access the Service.</p>
-                        
-                        <p>You represent that you are over the age of 18. The Company does not permit those under 18 to use the Service.</p>
-                        
-                        <h3>Links to Other Websites</h3>
-                        <p>Our Service may contain links to third-party websites or services that are not owned or controlled by the Company.</p>
-                        
-                        <p>The Company has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You further acknowledge and agree that the Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods, or services available on or through any such websites or services.</p>
-                        
-                        <p>We strongly advise You to read the terms and conditions and privacy policies of any third-party websites or services that You visit.</p>
-                        
-                        <h3>Termination</h3>
-                        <p>We may terminate or suspend Your access immediately, without prior notice or liability, for any reason whatsoever, including without limitation if You breach these Terms and Conditions.</p>
-                        
-                        <p>Upon termination, Your right to use the Service will cease immediately.</p>
-                        
-                        <h3>Limitation of Liability</h3>
-                        <p>Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of this Terms and Your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by You through the Service or 100 USD if You haven't purchased anything through the Service.</p>
-                        
-                        <p>To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever.</p>
-                        
-                        <h3>"AS IS" and "AS AVAILABLE" Disclaimer</h3>
-                        <p>The Service is provided to You "AS IS" and "AS AVAILABLE" and with all faults and defects without warranty of any kind. To the maximum extent permitted under applicable law, the Company, on its own behalf and on behalf of its Affiliates and its and their respective licensors and service providers, expressly disclaims all warranties.</p>
-                        
-                        <p>Without limiting the foregoing, neither the Company nor any of the company's provider makes any representation or warranty of any kind, express or implied: (i) as to the operation or availability of the Service, or the information, content, and materials or products included thereon; (ii) that the Service will be uninterrupted or error-free; (iii) as to the accuracy, reliability, or currency of any information or content provided through the Service; or (iv) that the Service, its servers, the content, or e-mails sent from or on behalf of the Company are free of viruses, scripts, trojan horses, worms, malware, timebombs or other harmful components.</p>
-                        
-                        <p>Some jurisdictions do not allow the exclusion of certain types of warranties or limitations on applicable statutory rights of a consumer, so some or all of the above exclusions and limitations may not apply to You. But in such a case the exclusions and limitations set forth in this section shall be applied to the greatest extent enforceable under applicable law.</p>
-                        
-                        <h3>Governing Law</h3>
-                        <p>The laws of the Country, excluding its conflicts of law rules, shall govern this Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws.</p>
-                        
-                        <h3>Disputes Resolution</h3>
-                        <p>If You have any concern or dispute about the Service, You agree to first try to resolve the dispute informally by contacting the Company.</p>
-                        
-                        <h3>For European Union (EU) Users</h3>
-                        <p>If You are a European Union consumer, you will benefit from any mandatory provisions of the law of the country in which you are resident.</p>
-                        
-                        <h3>United States Legal Compliance</h3>
-                        <p>You represent and warrant that (i) You are not located in a country that is subject to the United States government embargo, or that has been designated by the United States government as a "terrorist supporting" country, and (ii) You are not listed on any United States government list of prohibited or restricted parties.</p>
-                        
-                        <h3>Severability and Waiver</h3>
-                        
-                        <h4>Severability</h4>
-                        <p>If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.</p>
-                        
-                        <h4>Waiver</h4>
-                        <p>Except as provided herein, the failure to exercise a right or to require performance of an obligation under these Terms shall not effect a party's ability to exercise such right or require such performance at any time thereafter nor shall the waiver of a breach constitute a waiver of any subsequent breach.</p>
-                        
-                        <h3>Translation Interpretation</h3>
-                        <p>These Terms and Conditions may have been translated if We have made them available to You on our Service. You agree that the original English text shall prevail in the case of a dispute.</p>
-                        
-                        <h3>Changes to These Terms and Conditions</h3>
-                        <p>We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision is material We will make reasonable efforts to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at Our sole discretion.</p>
-                        
-                        <p>By continuing to access or use Our Service after those revisions become effective, You agree to be bound by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the website and the Service.</p>
-                        
-                        <h3>Contact Us</h3>
-                        <p>If you have any questions about these Terms and Conditions, You can contact us:</p>
-                        
-                        <ul>
-                            <li>By email: <a href="mailto:kaifabbasi1655@gmail.com">kaifabbasi1655@gmail.com</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Disclaimer Page -->
-        <div class="page" id="disclaimer">
-            <section class="hero">
-                <div class="container">
-                    <h1>Disclaimer & Affiliate Disclosure</h1>
-                    <p>Important legal disclosures about our content, recommendations, and affiliate relationships.</p>
-                </div>
-            </section>
-
-            <section class="content-section">
-                <div class="container">
-                    <div class="content-card">
-                        <h2>Disclaimer for SpeedTest Pro</h2>
-                        <p><strong>Effective Date:</strong> December 25, 2024</p>
-                        
-                        <h3>Website Disclaimer</h3>
-                        <p>The information provided by SpeedTest Pro ("we," "us," or "our") on https://speedtestpro.tools (the "Site") is for general informational purposes only. All information on the Site is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the Site.</p>
-                        
-                        <p><strong>UNDER NO CIRCUMSTANCE SHALL WE HAVE ANY LIABILITY TO YOU FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF THE SITE OR RELIANCE ON ANY INFORMATION PROVIDED ON THE SITE. YOUR USE OF THE SITE AND YOUR RELIANCE ON ANY INFORMATION ON THE SITE IS SOLELY AT YOUR OWN RISK.</strong></p>
-                        
-                        <h3>External Links Disclaimer</h3>
-                        <p>The Site may contain (or you may be sent through the Site) links to other websites or content belonging to or originating from third parties or links to websites and features in banners or other advertising. Such external links are not investigated, monitored, or checked for accuracy, adequacy, validity, reliability, availability, or completeness by us.</p>
-                        
-                        <p><strong>WE DO NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR THE ACCURACY OR RELIABILITY OF ANY INFORMATION OFFERED BY THIRD-PARTY WEBSITES LINKED THROUGH THE SITE OR ANY WEBSITE OR FEATURE LINKED IN ANY BANNER OR OTHER ADVERTISING. WE WILL NOT BE A PARTY TO OR IN ANY WAY BE RESPONSIBLE FOR MONITORING ANY TRANSACTION BETWEEN YOU AND THIRD-PARTY PROVIDERS OF PRODUCTS OR SERVICES.</strong></p>
-                        
-                        <h3>Performance Test Results Disclaimer</h3>
-                        <p><strong>TRANSPARENCY NOTICE:</strong> Results shown from our speed test tool are estimated and for informational purposes only. Actual website performance may vary based on real-world conditions including but not limited to: user location, device capabilities, network conditions, server load, time of day, and other variables beyond our control. Our speed test provides simulated results based on typical performance patterns and should be used as a guideline rather than an absolute measurement.</p>
-                        
-                        <p>Website speed and performance are influenced by numerous factors including hosting quality, website optimization, user device, network conditions, geographical location, and current internet traffic. While we strive to provide accurate simulations, actual performance may differ significantly from our test results.</p>
-                        
-                        <h3>Professional Disclaimer</h3>
-                        <p>The Site cannot and does not contain professional advice. The information is provided for general informational and educational purposes only and is not a substitute for professional advice. Accordingly, before taking any actions based upon such information, we encourage you to consult with the appropriate professionals. We do not provide any kind of professional advice. <strong>THE USE OR RELIANCE OF ANY INFORMATION CONTAINED ON THIS SITE IS SOLELY AT YOUR OWN RISK.</strong></p>
-                        
-                        <h2>Affiliate Disclosure</h2>
-                        
-                        <h3>Our Affiliate Relationships</h3>
-                        <p>SpeedTest Pro participates in various affiliate marketing programs, which means we may get paid commissions on purchases made through our links to retailer sites. Our primary affiliate relationship is with the Bluehost Affiliate Program, which offers competitive commissions for hosting referrals.</p>
-                        
-                        <p>According to the information from Bluehost's affiliate page, the program offers "$65 or more per qualified sale" with a "30 day cookie window," making it one of the more competitive hosting affiliate programs available. This information is consistent with what we've experienced in our partnership.</p>
-                        
-                        <p><strong>DISCLOSURE STATEMENT:</strong> We may earn a commission if you purchase through our links, at no extra cost to you. This commission helps support our free tools and continued development.</p>
-                        
-                        <h3>Our Recommendation Philosophy</h3>
-                        <p>Our primary goal is to provide valuable, accurate information to help you improve your website performance. We only recommend products and services that we have researched, tested, or believe will genuinely help our users. Our affiliate relationships do not influence our content, recommendations, or reviews. We maintain strict editorial independence, and our opinions are our own.</p>
-                        
-                        <p>We strive to provide unbiased, objective recommendations. The compensation we receive may affect which products we feature and where they appear on our site, but it does not affect our evaluations or recommendations. We prioritize recommending solutions that we believe offer the best value and performance for our users.</p>
-                        
-                        <h3>Shariah-Compliant Monetization</h3>
-                        <p>We operate on principles of ethical, Shariah-compliant business practices. This means:</p>
-                        
-                        <ul>
-                            <li><strong>Transparency:</strong> Clear disclosure of all affiliate relationships</li>
-                            <li><strong>Fairness:</strong> Recommendations based on genuine value, not just commissions</li>
-                            <li><strong>Mutual Benefit:</strong> Win-win scenarios where users receive genuine value</li>
-                            <li><strong>No Exploitation:</strong> Avoidance of deceptive or manipulative practices</li>
-                            <li><strong>Value-Based:</strong> Monetization tied to providing actual value and solutions</li>
-                        </ul>
-                        
-                        <p>Our approach aligns with Islamic business ethics that emphasize honesty, transparency, and mutual benefit in all transactions.</p>
-                        
-                        <h3>FTC Compliance</h3>
-                        <p>We comply with Federal Trade Commission (FTC) guidelines for affiliate marketing disclosures. All affiliate links are clearly disclosed, and we maintain transparency about our relationships with recommended products and services.</p>
-                        
-                        <h3>Your Responsibility</h3>
-                        <p>You should always conduct your own research before making any purchase decisions. While we strive to provide accurate information, prices, promotions, and product details change frequently. We recommend verifying any information directly with the product or service provider before making a purchase.</p>
-                        
-                        <p>Remember that your purchase through our affiliate links supports our work in maintaining and improving this free speed test tool. We appreciate your support in keeping our tools accessible to everyone.</p>
-                        
-                        <h3>Questions About Our Disclaimers</h3>
-                        <p>If you have any questions about our disclaimers or affiliate relationships, please contact us:</p>
-                        
-                        <ul>
-                            <li>By email: <a href="mailto:kaifabbasi1655@gmail.com">kaifabbasi1655@gmail.com</a></li>
-                        </ul>
                     </div>
                 </div>
             </section>
@@ -1718,94 +1385,30 @@
             <section class="hero">
                 <div class="container">
                     <h1>Frequently Asked Questions</h1>
-                    <p>Find answers to common questions about website speed testing and optimization.</p>
+                    <p>Find answers to common questions about website speed testing.</p>
                 </div>
             </section>
 
             <section class="content-section">
                 <div class="container">
-                    <!-- FAQ Schema JSON-LD -->
-                    <script type="application/ld+json">
-                    {
-                        "@context": "https://schema.org",
-                        "@type": "FAQPage",
-                        "mainEntity": [
-                            {
-                                "@type": "Question",
-                                "name": "How accurate is your website speed test?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Our speed test provides simulated results based on typical performance patterns. While we strive for accuracy, actual website performance may vary based on real-world conditions. Results are for informational purposes and should be used as guidelines for optimization."
-                                }
-                            },
-                            {
-                                "@type": "Question",
-                                "name": "What do Core Web Vitals measure?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Core Web Vitals are Google's user experience metrics: Largest Contentful Paint (LCP) measures loading performance, Cumulative Layout Shift (CLS) measures visual stability, and Interaction to Next Paint (INP) measures responsiveness. These metrics impact SEO rankings."
-                                }
-                            },
-                            {
-                                "@type": "Question",
-                                "name": "How can I improve my website speed?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Common improvements include optimizing images, enabling caching, minifying resources, using a CDN, reducing server response time, and upgrading hosting. Our tool provides specific recommendations based on your test results."
-                                }
-                            },
-                            {
-                                "@type": "Question",
-                                "name": "Is website speed important for SEO?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Yes, website speed is a confirmed Google ranking factor. Core Web Vitals are part of Google's page experience signals, directly impacting search rankings. Faster sites also have lower bounce rates and higher conversion rates."
-                                }
-                            },
-                            {
-                                "@type": "Question",
-                                "name": "How often should I test my website speed?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "We recommend testing monthly, or whenever you make significant changes to your site. Regular testing helps catch performance issues early and track optimization progress."
-                                }
-                            }
-                        ]
-                    }
-                    </script>
-                    
                     <div class="faq-container">
                         <div class="faq-item active">
                             <div class="faq-question">
-                                <span>How accurate is your website speed test?</span>
+                                <span>How accurate is your speed test?</span>
                                 <span class="faq-toggle">+</span>
                             </div>
                             <div class="faq-answer active">
-                                <p>Our speed test provides simulated results based on typical performance patterns and industry standards. While we strive for accuracy using advanced algorithms that consider multiple factors, it's important to understand that actual website performance may vary based on real-world conditions.</p>
-                                <p>Factors that can cause variations include: user geographical location, device capabilities, current network conditions, server load at time of actual access, time of day, and seasonal traffic patterns. Our results are designed to give you a reliable baseline and highlight optimization opportunities rather than provide absolute measurements.</p>
-                                <p><strong>Transparency Note:</strong> Results shown are estimated and for informational purposes only. Actual website performance may vary.</p>
+                                <p>Our tool provides simulated results based on typical performance patterns. While we strive for accuracy, actual performance may vary based on real-world conditions.</p>
                             </div>
                         </div>
                         
                         <div class="faq-item">
                             <div class="faq-question">
-                                <span>What do Core Web Vitals measure and why are they important?</span>
+                                <span>Do I need to pay to use your tool?</span>
                                 <span class="faq-toggle">+</span>
                             </div>
                             <div class="faq-answer">
-                                <p>Core Web Vitals are Google's user experience metrics that have become crucial for SEO and user satisfaction:</p>
-                                <ul>
-                                    <li><strong>Largest Contentful Paint (LCP):</strong> Measures loading performance by tracking when the largest content element becomes visible. Target: Under 2.5 seconds.</li>
-                                    <li><strong>Cumulative Layout Shift (CLS):</strong> Measures visual stability by calculating unexpected layout shifts. Target: Under 0.1.</li>
-                                    <li><strong>Interaction to Next Paint (INP):</strong> Measures responsiveness by observing interaction latency. Target: Under 200 milliseconds.</li>
-                                </ul>
-                                <p>These metrics are important because:</p>
-                                <ol>
-                                    <li>They directly impact Google search rankings</li>
-                                    <li>They correlate with user satisfaction and engagement</li>
-                                    <li>They affect conversion rates and bounce rates</li>
-                                    <li>They're part of Google's page experience signals</li>
-                                </ol>
+                                <p>No, our speed test tool is completely free and always will be. You can use it as many times as you need without any cost.</p>
                             </div>
                         </div>
                         
@@ -1815,220 +1418,16 @@
                                 <span class="faq-toggle">+</span>
                             </div>
                             <div class="faq-answer">
-                                <p>Improving website speed involves multiple strategies. Here are the most effective approaches:</p>
-                                
-                                <h4>Technical Optimizations:</h4>
-                                <ul>
-                                    <li><strong>Optimize Images:</strong> Compress images, use modern formats (WebP), implement lazy loading</li>
-                                    <li><strong>Enable Caching:</strong> Browser caching, server-side caching, CDN caching</li>
-                                    <li><strong>Minify Resources:</strong> Minify CSS, JavaScript, and HTML files</li>
-                                    <li><strong>Reduce HTTP Requests:</strong> Combine files, use sprites, eliminate unnecessary resources</li>
-                                </ul>
-                                
-                                <h4>Server & Hosting Improvements:</h4>
-                                <ul>
-                                    <li><strong>Upgrade Hosting:</strong> Move to faster hosting with SSD storage and optimized servers</li>
-                                    <li><strong>Use CDN:</strong> Implement a Content Delivery Network for global distribution</li>
-                                    <li><strong>Optimize Server Configuration:</strong> Proper server settings and PHP optimization</li>
-                                </ul>
-                                
-                                <h4>Code & Performance Optimizations:</h4>
-                                <ul>
-                                    <li><strong>Eliminate Render-Blocking Resources:</strong> Defer non-critical JavaScript and CSS</li>
-                                    <li><strong>Optimize Web Fonts:</strong> Use font-display swap, subset fonts, use system fonts when possible</li>
-                                    <li><strong>Reduce Third-Party Scripts:</strong> Minimize external scripts and trackers</li>
-                                </ul>
-                                
-                                <p>Our speed test tool provides specific recommendations based on your website's unique performance profile.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>Is website speed really important for SEO?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Yes, website speed is critically important for SEO for several reasons:</p>
-                                
-                                <h4>Direct Ranking Factor:</h4>
-                                <p>Google has confirmed that page speed is a ranking factor for both desktop and mobile searches. With the Core Web Vitals update, speed metrics have become even more important as part of Google's page experience signals.</p>
-                                
-                                <h4>User Experience Impact:</h4>
-                                <ul>
-                                    <li><strong>Bounce Rates:</strong> Pages loading within 2 seconds have average bounce rates below 9%, while pages taking 5 seconds see bounce rates of 38%</li>
-                                    <li><strong>Conversion Rates:</strong> A 1-second delay can reduce conversions by 7%</li>
-                                    <li><strong>User Satisfaction:</strong> Faster sites provide better user experiences, leading to longer sessions and more engagement</li>
-                                </ul>
-                                
-                                <h4>Crawl Budget Efficiency:</h4>
-                                <p>Faster sites allow search engine crawlers to index more pages with the same resources, potentially leading to better coverage of your site's content.</p>
-                                
-                                <h4>Mobile-First Indexing:</h4>
-                                <p>With Google's mobile-first indexing, mobile performance has become particularly important. Mobile users are more sensitive to slow loading times, with 53% abandoning sites that take longer than 3 seconds to load.</p>
-                                
-                                <p>Investing in website speed optimization provides both SEO benefits and direct business benefits through improved user experience and conversion rates.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>How often should I test my website speed?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                <p>The frequency of speed testing depends on your website's activity level and changes. Here's a recommended schedule:</p>
-                                
-                                <h4>Regular Testing Schedule:</h4>
-                                <ul>
-                                    <li><strong>Monthly:</strong> For stable websites with consistent traffic</li>
-                                    <li><strong>Weekly:</strong> For growing websites or e-commerce sites</li>
-                                    <li><strong>After Major Changes:</strong> Always test after significant updates</li>
-                                </ul>
-                                
-                                <h4>When to Test:</h4>
-                                <ol>
-                                    <li><strong>After Website Updates:</strong> New designs, features, or plugins</li>
-                                    <li><strong>Seasonal Checkups:</strong> Before high-traffic periods or sales events</li>
-                                    <li><strong>Performance Monitoring:</strong> Regular checks to identify gradual degradation</li>
-                                    <li><strong>SEO Audits:</strong> As part of regular SEO maintenance</li>
-                                    <li><strong>Competitor Analysis:</strong> Compare your speed against competitors</li>
-                                </ol>
-                                
-                                <h4>What to Monitor:</h4>
-                                <ul>
-                                    <li>Core Web Vitals scores</li>
-                                    <li>Mobile vs. desktop performance</li>
-                                    <li>Key pages (homepage, product pages, checkout)</li>
-                                    <li>Performance trends over time</li>
-                                </ul>
-                                
-                                <p>Regular testing helps you catch performance regressions early and track the impact of optimization efforts over time.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>What's the difference between mobile and desktop speed results?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Mobile and desktop speed results often differ significantly due to several factors:</p>
-                                
-                                <h4>Hardware Differences:</h4>
-                                <ul>
-                                    <li><strong>Processing Power:</strong> Mobile devices typically have slower processors</li>
-                                    <li><strong>Memory Limitations:</strong> Less RAM available for rendering</li>
-                                    <li><strong>GPU Capabilities:</strong> Different graphics processing capabilities</li>
-                                </ul>
-                                
-                                <h4>Network Conditions:</h4>
-                                <ul>
-                                    <li><strong>Connection Type:</strong> Mobile often uses cellular networks with higher latency</li>
-                                    <li><strong>Network Speed:</strong> Variable speeds compared to stable broadband</li>
-                                    <li><strong>Data Limitations:</strong> Mobile users may have data caps or throttling</li>
-                                </ul>
-                                
-                                <h4>Software & Browser Differences:</h4>
-                                <ul>
-                                    <li><strong>Browser Engines:</strong> Different rendering engines and capabilities</li>
-                                    <li><strong>Resource Handling:</strong> Mobile browsers may handle resources differently</li>
-                                    <li><strong>Power Optimization:</strong> Mobile devices may throttle performance to save battery</li>
-                                </ul>
-                                
-                                <h4>Content Delivery:</h4>
-                                <ul>
-                                    <li><strong>Responsive Design:</strong> Different CSS and layouts served</li>
-                                    <li><strong>Image Sizes:</strong> Often different image sizes served to mobile</li>
-                                    <li><strong>Script Loading:</strong> Different script loading strategies</li>
-                                </ul>
-                                
-                                <p>Because of these differences, Google uses mobile-first indexing, making mobile performance particularly important for SEO. Our tool tests both perspectives to give you a complete picture of your website's performance.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>How does hosting affect website speed?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Hosting is one of the most significant factors affecting website speed. Here's how different hosting aspects impact performance:</p>
-                                
-                                <h4>Server Hardware & Infrastructure:</h4>
-                                <ul>
-                                    <li><strong>SSD vs HDD:</strong> SSD storage offers much faster read/write speeds</li>
-                                    <li><strong>CPU Power:</strong> More powerful processors handle requests faster</li>
-                                    <li><strong>RAM Availability:</strong> More memory allows better caching and processing</li>
-                                    <li><strong>Network Quality:</strong> Better network infrastructure reduces latency</li>
-                                </ul>
-                                
-                                <h4>Server Location & CDN:</h4>
-                                <ul>
-                                    <li><strong>Geographic Proximity:</strong> Servers closer to users reduce latency</li>
-                                    <li><strong>CDN Integration:</strong> Content Delivery Networks distribute content globally</li>
-                                    <li><strong>Anycast Routing:</strong> Directs users to the nearest server</li>
-                                </ul>
-                                
-                                <h4>Server Software & Configuration:</h4>
-                                <ul>
-                                    <li><strong>Web Server Software:</strong> Optimized servers like LiteSpeed or Nginx</li>
-                                    <li><strong>Caching Systems:</strong> Built-in caching at server level</li>
-                                    <li><strong>PHP Optimization:</strong> Proper PHP version and configuration</li>
-                                    <li><strong>Database Optimization:</strong> Optimized MySQL or other databases</li>
-                                </ul>
-                                
-                                <h4>Resource Allocation & Sharing:</h4>
-                                <ul>
-                                    <li><strong>Dedicated Resources:</strong> Dedicated servers vs shared hosting</li>
-                                    <li><strong>Resource Limits:</strong> CPU and memory limits on shared hosting</li>
-                                    <li><strong>Server Load:</strong> Number of sites sharing server resources</li>
-                                </ul>
-                                
-                                <p>Upgrading to optimized hosting like Bluehost can often improve website speed by 50% or more, particularly for resource-intensive websites or those with global audiences.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>Are your speed test results stored or shared?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                <p>We take privacy seriously. Here's how we handle your test results:</p>
-                                
-                                <h4>Data Storage Policy:</h4>
-                                <ul>
-                                    <li><strong>Temporary Storage:</strong> Test results are temporarily stored for 30 days</li>
-                                    <li><strong>Anonymization:</strong> Results are anonymized and not linked to personal information</li>
-                                    <li><strong>Aggregate Data:</strong> We may use anonymized, aggregate data for research</li>
-                                    <li><strong>No Personal Linking:</strong> Test URLs are not linked to individual users</li>
-                                </ul>
-                                
-                                <h4>Data Sharing Policy:</h4>
-                                <ul>
-                                    <li><strong>No Third-Party Sharing:</strong> We do not sell or share individual test results</li>
-                                    <li><strong>Analytics Only:</strong> Aggregate data for service improvement</li>
-                                    <li><strong>Legal Compliance:</strong> Data may be disclosed if required by law</li>
-                                </ul>
-                                
-                                <h4>User Control:</h4>
-                                <ul>
-                                    <li><strong>Data Deletion:</strong> You can request deletion of your test data</li>
-                                    <li><strong>Privacy Compliance:</strong> We comply with GDPR and other privacy regulations</li>
-                                    <li><strong>Transparency:</strong> Clear privacy policy explaining all practices</li>
-                                </ul>
-                                
-                                <p>For complete details, please review our <a href="#" data-page="privacy">Privacy Policy</a>. Your privacy and data security are important to us, and we designed our systems with these principles in mind.</p>
+                                <p>Common improvements include optimizing images, enabling caching, minifying resources, and upgrading hosting. Our tool provides specific recommendations based on your test results.</p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="content-card mt-5">
                         <h3>Still Have Questions?</h3>
-                        <p>If you didn't find the answer to your question in our FAQ, please don't hesitate to contact us directly. We're here to help you optimize your website performance and succeed online.</p>
+                        <p>If you didn't find the answer to your question, please contact us directly.</p>
                         <div class="mt-3">
-                            <a href="#" class="btn btn-primary" data-page="contact">Contact Our Support Team</a>
+                            <a href="#" class="btn btn-primary" data-page="contact">Contact Us</a>
                         </div>
                     </div>
                 </div>
@@ -2040,7 +1439,7 @@
             <section class="hero">
                 <div class="container">
                     <h1>Contact Us</h1>
-                    <p>Get in touch with questions, feedback, or partnership inquiries. We're here to help.</p>
+                    <p>Get in touch with questions or feedback.</p>
                 </div>
             </section>
 
@@ -2048,115 +1447,35 @@
                 <div class="container">
                     <div class="content-card">
                         <h2>Send Us a Message</h2>
-                        <p>We typically respond within 24-48 hours. For faster response, please include detailed information about your inquiry.</p>
                         
                         <div class="contact-form">
                             <form id="contactForm">
                                 <div class="form-group">
-                                    <label for="contactName" class="form-label">Your Name *</label>
-                                    <input type="text" id="contactName" class="form-control" required>
-                                    <div class="form-error" id="nameError">Please enter your name</div>
+                                    <label for="contactName" class="form-label">Your Name</label>
+                                    <input type="text" id="contactName" class="form-control">
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="contactEmail" class="form-label">Email Address *</label>
-                                    <input type="email" id="contactEmail" class="form-control" required>
-                                    <div class="form-error" id="emailError">Please enter a valid email address</div>
+                                    <label for="contactEmail" class="form-label">Email Address</label>
+                                    <input type="email" id="contactEmail" class="form-control">
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="contactSubject" class="form-label">Subject</label>
-                                    <input type="text" id="contactSubject" class="form-control">
+                                    <label for="contactMessage" class="form-label">Your Message</label>
+                                    <textarea id="contactMessage" class="form-control"></textarea>
                                 </div>
                                 
-                                <div class="form-group">
-                                    <label for="contactMessage" class="form-label">Your Message *</label>
-                                    <textarea id="contactMessage" class="form-control" required></textarea>
-                                    <div class="form-error" id="messageError">Please enter your message</div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input type="checkbox" id="newsletterOptIn" class="form-check-input" checked>
-                                        <label for="newsletterOptIn" class="form-check-label">Subscribe to our newsletter for optimization tips and updates</label>
-                                    </div>
-                                </div>
-                                
-                                <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                                <button type="submit" class="btn btn-primary">Send Message</button>
                                 
                                 <div id="formSuccess" class="form-success">
-                                    Thank you! Your message has been sent successfully. We'll respond within 24-48 hours.
+                                    Thank you for your message!
                                 </div>
                             </form>
                         </div>
                         
                         <div class="mt-5">
-                            <h3>Other Ways to Reach Us</h3>
-                            <div class="tips-grid mt-3">
-                                <div class="tip-card">
-                                    <div class="tip-icon">📧</div>
-                                    <div>
-                                        <h5>General Inquiries</h5>
-                                        <p>Email: <a href="mailto:kaifabbasi1655@gmail.com">kaifabbasi1655@gmail.com</a></p>
-                                        <p><small>Response time: 24-48 hours</small></p>
-                                    </div>
-                                </div>
-                                
-                                <div class="tip-card">
-                                    <div class="tip-icon">🤝</div>
-                                    <div>
-                                        <h5>Business & Partnerships</h5>
-                                        <p>Email: <a href="mailto:kaifabbasi1655@gmail.com">kaifabbasi1655@gmail.com</a></p>
-                                        <p><small>For affiliate programs and collaborations</small></p>
-                                    </div>
-                                </div>
-                                
-                                <div class="tip-card">
-                                    <div class="tip-icon">⚖️</div>
-                                    <div>
-                                        <h5>Legal & Privacy</h5>
-                                        <p>Email: <a href="mailto:kaifabbasi1655@gmail.com">kaifabbasi1655@gmail.com</a></p>
-                                        <p><small>For DMCA requests and privacy concerns</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="optimization-tips mt-5">
-                            <h3 class="text-center">Partnership & White-Label Opportunities</h3>
-                            <p class="text-center">Interested in using our speed test technology on your own website? We offer white-label solutions and partnership opportunities for qualified businesses, agencies, and developers.</p>
-                            
-                            <div class="tips-grid mt-3">
-                                <div class="tip-card">
-                                    <div class="tip-icon">🏢</div>
-                                    <div>
-                                        <h5>White-Label Solutions</h5>
-                                        <p>Brand our speed test tool as your own with custom styling and features.</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="tip-card">
-                                    <div class="tip-icon">🔧</div>
-                                    <div>
-                                        <h5>API Access</h5>
-                                        <p>Integrate our speed testing capabilities into your own applications.</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="tip-card">
-                                    <div class="tip-icon">📈</div>
-                                    <div>
-                                        <h5>Affiliate Partnerships</h5>
-                                        <p>Join our affiliate program and earn commissions on premium features.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="text-center mt-3">
-                                <a href="mailto:kaifabbasi1655@gmail.com?subject=Partnership Inquiry" class="btn btn-secondary">
-                                    Request Partnership Information
-                                </a>
-                            </div>
+                            <h3>Email Support</h3>
+                            <p>You can also reach us at: <a href="mailto:kaifabbasi1655@gmail.com">kaifabbasi1655@gmail.com</a></p>
                         </div>
                     </div>
                 </div>
@@ -2170,50 +1489,42 @@
             <div class="footer-content">
                 <div>
                     <h3>SpeedTest Pro</h3>
-                    <p>Free website speed testing and optimization recommendations. Improve your site's performance for better user experience and SEO.</p>
-                    <div class="mt-3">
-                        <button class="theme-toggle" id="footerThemeToggle">
-                            <span id="footerThemeIcon">🌙</span> Toggle Theme
-                        </button>
-                    </div>
+                    <p>Free website speed testing and optimization recommendations.</p>
                 </div>
                 
                 <div>
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="#" data-page="home">Home</a></li>
-                        <li><a href="#" data-page="speed-test">Speed Test Tool</a></li>
-                        <li><a href="#" data-page="about">About Us</a></li>
+                        <li><a href="#main-tool">Speed Test Tool</a></li>
+                        <li><a href="#other-tools">Other Tools</a></li>
+                        <li><a href="#" data-page="about">About</a></li>
                         <li><a href="#" data-page="faq">FAQ</a></li>
-                        <li><a href="#" data-page="contact">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h3>Legal</h3>
                     <ul class="footer-links">
-                        <li><a href="#" data-page="privacy">Privacy Policy</a></li>
-                        <li><a href="#" data-page="terms">Terms & Conditions</a></li>
+                        <li><a href="#" data-page="privacy">Privacy</a></li>
+                        <li><a href="#" data-page="terms">Terms</a></li>
                         <li><a href="#" data-page="disclaimer">Disclaimer</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h3>Our Other Tools</h3>
+                    <h3>Our Tools</h3>
                     <ul class="footer-links">
-                        <li><a href="https://kaif1116.github.io/Freelance-Rate-Calculator-/" target="_blank">Freelance Rate Calculator</a></li>
-                        <li><a href="https://kaif1116.github.io/multi-name-generator-2026/" target="_blank">Multi Name Generator</a></li>
+                        <li><a href="https://kaif1116.github.io/Freelance-Rate-Calculator-/" target="_blank">Freelance Calculator</a></li>
+                        <li><a href="https://kaif1116.github.io/multi-name-generator-2026/" target="_blank">Name Generator</a></li>
                         <li><a href="https://kaif1116.github.io/content-repurposer/" target="_blank">Content Repurposer</a></li>
-                        <li><a href="https://www.financetodaynews.xyz" target="_blank">Finance Today News</a></li>
-                        <li><a href="http://zonecartshop.blogspot.com" target="_blank">ZoneCart Shop</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
                 <p>&copy; 2024 SpeedTest Pro. All rights reserved.</p>
-                <p>This site contains affiliate links. <strong>We may earn a commission if you purchase through our links, at no extra cost to you.</strong> This supports our free tools. <a href="#" data-page="disclaimer">See our full disclaimer</a>.</p>
-                <p>Website designed for AdSense compliance with ethical, Shariah-compliant monetization practices.</p>
+                <p><strong>Transparency:</strong> We may earn a commission if you purchase through our links, at no extra cost to you. This supports our free tools.</p>
+                <p>Results shown are estimated and for informational purposes. Actual website performance may vary.</p>
                 <p>Contact: <a href="mailto:kaifabbasi1655@gmail.com">kaifabbasi1655@gmail.com</a></p>
             </div>
         </div>
@@ -2224,8 +1535,6 @@
         // ===== DOM ELEMENTS =====
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
-        const footerThemeToggle = document.getElementById('footerThemeToggle');
-        const footerThemeIcon = document.getElementById('footerThemeIcon');
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.querySelector('.nav-links');
         const pages = document.querySelectorAll('.page');
@@ -2237,80 +1546,66 @@
         const contactForm = document.getElementById('contactForm');
         const faqItems = document.querySelectorAll('.faq-item');
         const runNewTestBtn = document.getElementById('runNewTest');
-        const shareResultsBtn = document.getElementById('shareResults');
+        const urlError = document.getElementById('urlError');
         
         // ===== OPTIMIZATION TIPS DATA =====
         const optimizationTips = [
             {
                 icon: "🖼️",
                 title: "Optimize Images",
-                description: "Compress images using tools like TinyPNG, convert to WebP format, and implement lazy loading. Large images are the most common cause of slow loading times."
+                description: "Compress images and use modern formats like WebP. Large images slow down loading."
             },
             {
                 icon: "⚡",
                 title: "Enable Browser Caching",
-                description: "Configure proper cache headers to store static resources locally. This dramatically improves load times for returning visitors."
+                description: "Configure cache headers to store static resources locally for faster repeat visits."
             },
             {
                 icon: "📦",
-                title: "Minify CSS, JavaScript & HTML",
-                description: "Remove unnecessary characters from code files without changing functionality. This reduces file sizes and improves parsing speed."
+                title: "Minify Resources",
+                description: "Remove unnecessary characters from CSS, JavaScript, and HTML files."
             },
             {
                 icon: "🌐",
-                title: "Implement a CDN",
-                description: "Use a Content Delivery Network to serve resources from locations closer to your users. This reduces latency and improves global performance."
+                title: "Use a CDN",
+                description: "Serve resources from locations closer to your users with a Content Delivery Network."
             },
             {
                 icon: "🔧",
-                title: "Reduce Server Response Time",
-                description: "Optimize your hosting configuration, database queries, and server software. Consider upgrading to faster hosting with SSD storage."
+                title: "Reduce Server Response",
+                description: "Optimize hosting configuration and consider upgrading to faster hosting."
             },
             {
                 icon: "🎯",
-                title: "Eliminate Render-Blocking Resources",
-                description: "Defer non-critical JavaScript and CSS, and load above-the-fold content first. This improves perceived load time."
-            },
-            {
-                icon: "🚀",
-                title: "Use Efficient Coding Practices",
-                description: "Optimize CSS delivery, reduce DOM size, and avoid costly CSS selectors. Clean, efficient code loads faster."
-            },
-            {
-                icon: "📱",
-                title: "Optimize for Mobile",
-                description: "Serve appropriately sized images for mobile, use mobile-friendly designs, and test on actual mobile devices."
+                title: "Eliminate Render Blocking",
+                description: "Defer non-critical JavaScript and CSS to load above-the-fold content first."
             }
         ];
         
-        // ===== THEME TOGGLE FUNCTIONALITY =====
+        // ===== THEME TOGGLE =====
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
             const isDarkMode = document.body.classList.contains('dark-mode');
             
             if (isDarkMode) {
                 themeIcon.textContent = '☀️';
-                footerThemeIcon.textContent = '☀️';
                 localStorage.setItem('theme', 'dark');
             } else {
                 themeIcon.textContent = '🌙';
-                footerThemeIcon.textContent = '🌙';
                 localStorage.setItem('theme', 'light');
             }
         }
         
         themeToggle.addEventListener('click', toggleTheme);
-        footerThemeToggle.addEventListener('click', toggleTheme);
         
         // Check for saved theme preference
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.body.classList.add('dark-mode');
             themeIcon.textContent = '☀️';
-            footerThemeIcon.textContent = '☀️';
         }
         
-        // ===== MOBILE MENU TOGGLE =====
+        // ===== MOBILE MENU =====
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
@@ -2358,35 +1653,61 @@
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const pageId = link.getAttribute('data-page');
-                navigateToPage(pageId);
-            });
-        });
-        
-        // Footer navigation
-        document.querySelectorAll('footer a[data-page]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const pageId = link.getAttribute('data-page');
-                navigateToPage(pageId);
+                if (pageId) {
+                    navigateToPage(pageId);
+                }
             });
         });
         
         // Logo navigation
         document.querySelector('.logo').addEventListener('click', (e) => {
             e.preventDefault();
-            navigateToPage('home');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
         
-        // ===== SPEED TEST FUNCTIONALITY =====
-        function isValidUrl(string) {
+        // ===== URL VALIDATION AND FIX =====
+        function cleanAndValidateUrl(inputUrl) {
+            // Remove any whitespace
+            let url = inputUrl.trim();
+            
+            // Remove duplicate protocols
+            url = url.replace(/(https?:\/\/)+/g, 'https://');
+            
+            // Remove duplicate http://https:// or https://http:// patterns
+            url = url.replace(/http:\/\/https:\/\//g, 'https://');
+            url = url.replace(/https:\/\/http:\/\//g, 'https://');
+            
+            // If no protocol, add https://
+            if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                // Check if it starts with www.
+                if (url.startsWith('www.')) {
+                    url = 'https://' + url;
+                } else {
+                    // Check if it looks like a domain (has a dot and no spaces)
+                    if (url.includes('.') && !url.includes(' ')) {
+                        url = 'https://' + url;
+                    }
+                }
+            }
+            
+            // Basic URL validation
             try {
-                const url = new URL(string);
-                return url.protocol === 'http:' || url.protocol === 'https:';
-            } catch (_) {
-                return false;
+                // Test if it's a valid URL
+                new URL(url);
+                
+                // Additional validation: must have a domain
+                const domainMatch = url.match(/https?:\/\/([^\/]+)/);
+                if (!domainMatch || domainMatch[1].length < 3) {
+                    return { valid: false, cleaned: url };
+                }
+                
+                return { valid: true, cleaned: url };
+            } catch (error) {
+                return { valid: false, cleaned: url };
             }
         }
         
+        // ===== SPEED TEST FUNCTIONALITY =====
         function simulateTestResults(url) {
             // Extract domain for display
             const domain = url.replace(/^(https?:\/\/)?(www\.)?/, '').split('/')[0];
@@ -2493,8 +1814,8 @@
             const tipsContainer = document.getElementById('optimizationTips');
             tipsContainer.innerHTML = '';
             
-            // Select random tips (4-6 tips)
-            const tipCount = Math.floor(Math.random() * 3) + 4;
+            // Select random tips (3-4 tips)
+            const tipCount = Math.floor(Math.random() * 2) + 3;
             const shuffledTips = [...optimizationTips].sort(() => 0.5 - Math.random());
             const selectedTips = shuffledTips.slice(0, tipCount);
             
@@ -2515,24 +1836,35 @@
         startTestBtn.addEventListener('click', () => {
             const url = websiteUrlInput.value.trim();
             
-            // URL validation
-            if (!url || url === 'https://' || !isValidUrl(url)) {
-                alert('Please enter a valid website URL starting with http:// or https://');
+            // Hide error message
+            urlError.style.display = 'none';
+            
+            // Clean and validate URL
+            const { valid, cleaned } = cleanAndValidateUrl(url);
+            
+            if (!valid) {
+                urlError.style.display = 'block';
                 websiteUrlInput.focus();
                 return;
             }
+            
+            // Update input with cleaned URL
+            websiteUrlInput.value = cleaned;
             
             // Show loading, hide results
             loadingDiv.style.display = 'block';
             resultsDiv.style.display = 'none';
             
-            // Navigate to speed test page if not already there
-            if (!document.getElementById('speed-test').classList.contains('active')) {
-                navigateToPage('speed-test');
-            }
+            // Scroll to results area
+            setTimeout(() => {
+                document.querySelector('.results-container').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }, 100);
             
-            // Simulate test delay (15-30 seconds)
-            const delay = Math.floor(Math.random() * 15000) + 15000;
+            // Simulate test delay (5-15 seconds)
+            const delay = Math.floor(Math.random() * 10000) + 5000;
             
             setTimeout(() => {
                 // Hide loading, show results
@@ -2540,7 +1872,7 @@
                 resultsDiv.style.display = 'block';
                 
                 // Generate simulated results
-                simulateTestResults(url);
+                simulateTestResults(cleaned);
                 
                 // Populate optimization tips
                 populateOptimizationTips();
@@ -2553,33 +1885,11 @@
         // Run new test button
         if (runNewTestBtn) {
             runNewTestBtn.addEventListener('click', () => {
-                websiteUrlInput.value = 'https://';
+                websiteUrlInput.value = '';
                 loadingDiv.style.display = 'none';
                 resultsDiv.style.display = 'none';
+                urlError.style.display = 'none';
                 websiteUrlInput.focus();
-            });
-        }
-        
-        // Share results button
-        if (shareResultsBtn) {
-            shareResultsBtn.addEventListener('click', () => {
-                const score = document.getElementById('performanceScore').textContent;
-                const url = websiteUrlInput.value || 'my website';
-                
-                const shareText = `I just tested ${url} with SpeedTest Pro and got a score of ${score}/100! Test your website speed for free: ` + window.location.origin;
-                
-                if (navigator.share) {
-                    navigator.share({
-                        title: 'My Website Speed Test Results',
-                        text: shareText,
-                        url: window.location.href
-                    });
-                } else {
-                    // Fallback: copy to clipboard
-                    navigator.clipboard.writeText(shareText).then(() => {
-                        alert('Results copied to clipboard! You can now share them anywhere.');
-                    });
-                }
             });
         }
         
@@ -2587,6 +1897,15 @@
         websiteUrlInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 startTestBtn.click();
+            }
+        });
+        
+        // Real-time URL cleaning as user types
+        websiteUrlInput.addEventListener('blur', () => {
+            const url = websiteUrlInput.value.trim();
+            if (url) {
+                const { cleaned } = cleanAndValidateUrl(url);
+                websiteUrlInput.value = cleaned;
             }
         });
         
@@ -2614,140 +1933,31 @@
             });
         });
         
-        // ===== CONTACT FORM VALIDATION =====
+        // ===== CONTACT FORM =====
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                let isValid = true;
+                const formSuccess = document.getElementById('formSuccess');
+                formSuccess.style.display = 'block';
                 
-                // Validate name
-                const name = document.getElementById('contactName');
-                const nameError = document.getElementById('nameError');
-                if (!name.value.trim()) {
-                    nameError.style.display = 'block';
-                    isValid = false;
-                } else {
-                    nameError.style.display = 'none';
-                }
-                
-                // Validate email
-                const email = document.getElementById('contactEmail');
-                const emailError = document.getElementById('emailError');
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!email.value.trim() || !emailRegex.test(email.value)) {
-                    emailError.style.display = 'block';
-                    isValid = false;
-                } else {
-                    emailError.style.display = 'none';
-                }
-                
-                // Validate message
-                const message = document.getElementById('contactMessage');
-                const messageError = document.getElementById('messageError');
-                if (!message.value.trim() || message.value.trim().length < 10) {
-                    messageError.textContent = 'Please enter a message with at least 10 characters';
-                    messageError.style.display = 'block';
-                    isValid = false;
-                } else {
-                    messageError.style.display = 'none';
-                }
-                
-                // If valid, show success message
-                if (isValid) {
-                    const formSuccess = document.getElementById('formSuccess');
-                    formSuccess.style.display = 'block';
-                    
-                    // In a real implementation, you would send the form data to a server here
-                    // For demo purposes, we'll just log it and reset the form
-                    console.log('Form submitted:', {
-                        name: name.value,
-                        email: email.value,
-                        subject: document.getElementById('contactSubject').value,
-                        message: message.value,
-                        newsletter: document.getElementById('newsletterOptIn').checked
-                    });
-                    
-                    // Reset form after delay
-                    setTimeout(() => {
-                        contactForm.reset();
-                        formSuccess.style.display = 'none';
-                        
-                        // Scroll to success message
-                        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }, 3000);
-                }
+                // Reset form after delay
+                setTimeout(() => {
+                    contactForm.reset();
+                    formSuccess.style.display = 'none';
+                }, 3000);
             });
         }
         
-        // ===== LAZY LOADING IMAGES (Placeholder for future implementation) =====
-        function lazyLoadImages() {
-            const images = document.querySelectorAll('img[data-src]');
-            
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.getAttribute('data-src');
-                        img.removeAttribute('data-src');
-                        observer.unobserve(img);
-                    }
-                });
-            });
-            
-            images.forEach(img => imageObserver.observe(img));
-        }
-        
-        // Initialize lazy loading when DOM is loaded
+        // ===== INITIALIZE =====
         document.addEventListener('DOMContentLoaded', () => {
-            lazyLoadImages();
+            // Populate initial optimization tips
             populateOptimizationTips();
-        });
-        
-        // ===== JSON OUTPUT STRUCTURE FOR FUTURE API =====
-        function getTestResultsJSON() {
-            return {
-                url: websiteUrlInput.value.trim(),
-                timestamp: new Date().toISOString(),
-                performanceScore: parseInt(document.getElementById('performanceScore').textContent),
-                performanceText: document.getElementById('performanceText').textContent,
-                coreWebVitals: {
-                    lcp: document.getElementById('lcpValue').textContent,
-                    cls: document.getElementById('clsValue').textContent,
-                    inp: document.getElementById('inpValue').textContent
-                },
-                devicePerformance: {
-                    mobile: document.getElementById('mobileSpeed').textContent,
-                    desktop: document.getElementById('desktopSpeed').textContent
-                },
-                recommendations: optimizationTips.slice(0, 4)
-            };
-        }
-        
-        // ===== ADDITIONAL MONETIZATION & MARKETING TIPS =====
-        function showMonetizationTips() {
-            // This function could be triggered by a button or automatically
-            const tips = [
-                "💡 Tip: You can monetize your own speed test website with AdSense by providing genuine value and following Google's policies.",
-                "💰 Tip: Affiliate marketing with hosting companies can generate substantial income when done ethically and transparently.",
-                "🚀 Tip: Consider offering premium features like API access, scheduled testing, or team collaboration for recurring revenue.",
-                "📧 Tip: Build an email list by offering exclusive optimization guides or regular performance reports.",
-                "🤝 Tip: Partner with web developers and agencies to offer white-label speed testing solutions."
-            ];
             
-            // Display a random tip (could be implemented as a toast notification)
-            const randomTip = tips[Math.floor(Math.random() * tips.length)];
-            console.log('Monetization Tip:', randomTip);
+            // Focus on URL input
+            websiteUrlInput.focus();
             
-            // In a full implementation, you might show this as a notification to users
-            // For now, we'll just log it to console
-        }
-        
-        // Show a monetization tip periodically (every 5 minutes)
-        setInterval(showMonetizationTips, 300000);
-        
-        // ===== SMOOTH SCROLL ANIMATIONS =====
-        function initSmoothScroll() {
+            // Set up smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
@@ -2763,67 +1973,9 @@
                     }
                 });
             });
-        }
-        
-        // Initialize smooth scroll
-        initSmoothScroll();
-        
-        // ===== PERFORMANCE MONITORING =====
-        // Monitor Core Web Vitals (simulated for demo)
-        function monitorPerformance() {
-            // In a real implementation, you would use the Web Vitals library
-            // For demo, we'll simulate monitoring
-            console.log('Performance monitoring active');
             
-            // Simulated performance data
-            const performanceData = {
-                fcp: 1200, // First Contentful Paint in ms
-                lcp: 2100, // Largest Contentful Paint in ms
-                fid: 45,   // First Input Delay in ms
-                cls: 0.08  // Cumulative Layout Shift
-            };
-            
-            return performanceData;
-        }
-        
-        // ===== FUTURE UPGRADE SECTION (PREMIUM FEATURES) =====
-        const premiumFeatures = [
-            {
-                title: "API Access",
-                description: "Integrate our speed testing capabilities into your own applications",
-                price: "$19/month"
-            },
-            {
-                title: "Scheduled Testing",
-                description: "Automatically test your website daily, weekly, or monthly",
-                price: "$9/month"
-            },
-            {
-                title: "Team Collaboration",
-                description: "Share test results with team members and collaborate on optimization",
-                price: "$29/month"
-            },
-            {
-                title: "Historical Reports",
-                description: "Track performance changes over time with detailed analytics",
-                price: "$14/month"
-            }
-        ];
-        
-        // Function to display premium features
-        function displayPremiumFeatures() {
-            // This could be triggered when users show interest in upgrading
-            console.log('Premium features available:', premiumFeatures);
-        }
-        
-        // ===== INITIALIZE ON LOAD =====
-        window.addEventListener('load', () => {
-            console.log('SpeedTest Pro loaded successfully');
-            console.log('Ready for AdSense and affiliate monetization');
-            console.log('Admin email: kaifabbasi1655@gmail.com');
-            
-            // Display initial monetization tip
-            showMonetizationTips();
+            // Initialize tool on homepage (already visible)
+            console.log('SpeedTest Pro ready. Tool is now visible on homepage.');
         });
     </script>
 </body>

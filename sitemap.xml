@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://kaif1116.github.io/website-speed-test/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://kaif1116.github.io/website-speed-test/website-speed-guide.html</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://kaif1116.github.io/website-speed-test/hosting-affects-speed.html</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://kaif1116.github.io/website-speed-test/page-speed-seo.html</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://kaif1116.github.io/website-speed-test/core-web-vitals.html</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://kaif1116.github.io/website-speed-test/cheap-fast-hosting.html</loc>
+    <priority>0.9</priority>
+  </url>
+
+</urlset>

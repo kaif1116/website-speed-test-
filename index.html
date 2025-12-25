@@ -1048,7 +1048,6 @@
                 
                 <div class="nav-links" id="navLinks">
                     <a href="#" class="nav-link active" data-page="home">Home</a>
-                    <a href="#" class="nav-link" data-page="speed-test">Speed Test</a>
                     <a href="#" class="nav-link" data-page="about">About</a>
                     <a href="#" class="nav-link" data-page="privacy">Privacy</a>
                     <a href="#" class="nav-link" data-page="terms">Terms</a>
@@ -1094,9 +1093,177 @@
                         </div>
                     </div>
                     
-                    <div class="mt-4">
-                        <a href="#" class="btn btn-primary btn-lg" data-page="speed-test">Start Speed Test</a>
-                    </div>
+                    <!-- Speed Test Tool on Home Page -->
+                    <section class="main-tool-section">
+                        <div class="container">
+                            <div class="main-tool-container">
+                                <div class="tool-header">
+                                    <h2>Free Website Speed Test</h2>
+                                    <p>Enter your website URL to check performance, Core Web Vitals, and get optimization tips.</p>
+                                </div>
+                                
+                                <div class="test-input-container">
+                                    <input type="url" id="websiteUrl" class="test-input" placeholder="example.com or https://example.com">
+                                    <button class="btn btn-primary btn-lg" id="startTest">Start Speed Test</button>
+                                </div>
+                                
+                                <div class="error-message" id="urlError">
+                                    Please enter a valid website URL. Example: example.com or https://example.com
+                                </div>
+                                
+                                <div class="loading-container" id="loading">
+                                    <div class="spinner"></div>
+                                    <h3>Analyzing Website Performance</h3>
+                                    <p>Testing from multiple locations and devices...</p>
+                                    <p class="text-light mt-2"><small>Checking server response, Core Web Vitals, and mobile optimization</small></p>
+                                </div>
+                                
+                                <div class="results-container" id="results">
+                                    <div class="performance-score">
+                                        <div class="score-circle" id="scoreCircle" style="--score-color: #059669; --score-percent: 85;">
+                                            <span id="performanceScore">85</span>
+                                        </div>
+                                        <div class="score-text" id="performanceText">Good Performance</div>
+                                        <p id="performanceDescription">Your website loads faster than 85% of tested websites. There are optimization opportunities available.</p>
+                                    </div>
+                                    
+                                    <div class="section-header">
+                                        <h3>Core Web Vitals Analysis</h3>
+                                        <p>Google's user experience metrics that impact SEO rankings</p>
+                                    </div>
+                                    
+                                    <div class="web-vitals-grid">
+                                        <div class="vital-card">
+                                            <div class="vital-header">
+                                                <div class="vital-icon">⏱️</div>
+                                                <h4>LCP</h4>
+                                            </div>
+                                            <p>Largest Contentful Paint measures loading performance.</p>
+                                            <div class="vital-value vital-good" id="lcpValue">2.1s</div>
+                                            <p><strong>Status:</strong> Good (under 2.5s)</p>
+                                            <p class="text-light mt-2"><small>Target: &lt; 2.5 seconds</small></p>
+                                        </div>
+                                        
+                                        <div class="vital-card">
+                                            <div class="vital-header">
+                                                <div class="vital-icon">📐</div>
+                                                <h4>CLS</h4>
+                                            </div>
+                                            <p>Cumulative Layout Shift measures visual stability.</p>
+                                            <div class="vital-value vital-good" id="clsValue">0.08</div>
+                                            <p><strong>Status:</strong> Good (under 0.1)</p>
+                                            <p class="text-light mt-2"><small>Target: &lt; 0.1</small></p>
+                                        </div>
+                                        
+                                        <div class="vital-card">
+                                            <div class="vital-header">
+                                                <div class="vital-icon">🎯</div>
+                                                <h4>INP</h4>
+                                            </div>
+                                            <p>Interaction to Next Paint measures responsiveness.</p>
+                                            <div class="vital-value vital-good" id="inpValue">180ms</div>
+                                            <p><strong>Status:</strong> Good (under 200ms)</p>
+                                            <p class="text-light mt-2"><small>Target: &lt; 200 milliseconds</small></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="section-header">
+                                        <h3>Performance by Device Type</h3>
+                                        <p>Different experiences across mobile and desktop devices</p>
+                                    </div>
+                                    
+                                    <div class="device-results">
+                                        <div class="device-card">
+                                            <div class="device-icon">📱</div>
+                                            <h4>Mobile Performance</h4>
+                                            <p>Simulated 4G Connection (Slower Network)</p>
+                                            <div class="vital-value vital-average" id="mobileSpeed">3.4s</div>
+                                            <p><strong>Load Time</strong></p>
+                                            <p><strong>Performance Score:</strong> 72/100</p>
+                                            <p class="text-light mt-2"><small>Areas for improvement detected</small></p>
+                                        </div>
+                                        
+                                        <div class="device-card">
+                                            <div class="device-icon">💻</div>
+                                            <h4>Desktop Performance</h4>
+                                            <p>Broadband Connection (Faster Network)</p>
+                                            <div class="vital-value vital-good" id="desktopSpeed">1.8s</div>
+                                            <p><strong>Load Time</strong></p>
+                                            <p><strong>Performance Score:</strong> 92/100</p>
+                                            <p class="text-light mt-2"><small>Excellent desktop performance</small></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Affiliate Recommendation Section -->
+                                    <div class="affiliate-section" id="affiliateSection">
+                                        <div class="affiliate-logo">Bluehost</div>
+                                        <h3>Optimize Your Website Hosting for Better Speed</h3>
+                                        <p>Your speed test shows opportunities to improve server response time. Many performance issues start with hosting quality.</p>
+                                        
+                                        <div class="tips-grid mt-3">
+                                            <div class="tip-card">
+                                                <div class="tip-icon">⚡</div>
+                                                <div>
+                                                    <h5>Built-in Caching</h5>
+                                                    <p>Automatic caching for faster loading</p>
+                                                </div>
+                                            </div>
+                                            <div class="tip-card">
+                                                <div class="tip-icon">🌐</div>
+                                                <div>
+                                                    <h5>Free CDN</h5>
+                                                    <p>Global content delivery network</p>
+                                                </div>
+                                            </div>
+                                            <div class="tip-card">
+                                                <div class="tip-icon">💾</div>
+                                                <div>
+                                                    <h5>SSD Storage</h5>
+                                                    <p>Faster read/write speeds</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <p class="mt-3">Better hosting can improve load times significantly. Consider upgrading for optimal performance.</p>
+                                        
+                                        <div class="mt-4">
+                                            <a href="https://www.bluehost.com/affiliates?utm_source=speedtestpro&utm_medium=referral&utm_campaign=speed_test_tool" 
+                                               class="btn btn-primary btn-lg" 
+                                               target="_blank" 
+                                               rel="nofollow">
+                                                Explore Bluehost Plans
+                                            </a>
+                                        </div>
+                                        
+                                        <p class="mt-3" style="font-size: 0.875rem; opacity: 0.9;">
+                                            <strong>Transparency:</strong> We may earn a commission if you choose to upgrade through our link, at no extra cost to you. This supports our free tools.
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="optimization-tips">
+                                        <div class="section-header">
+                                            <h3>Optimization Recommendations</h3>
+                                            <p>Actionable tips to improve your website performance</p>
+                                        </div>
+                                        
+                                        <div class="tips-grid" id="optimizationTips">
+                                            <!-- Tips will be populated by JavaScript -->
+                                        </div>
+                                        
+                                        <div class="mt-4 text-center">
+                                            <p><strong>Transparency Note:</strong> Results shown are estimated and for informational purposes. Actual website performance may vary based on real-world conditions.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="text-center mt-5">
+                                        <button class="btn btn-outline" id="runNewTest">
+                                            <span>🔄</span> Test Another Website
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </section>
 
@@ -1282,187 +1449,6 @@
             </section>
         </div>
 
-        <!-- Speed Test Page -->
-        <div class="page" id="speed-test">
-            <section class="hero">
-                <div class="container">
-                    <h1>Website Speed Test Tool</h1>
-                    <p>Analyze your website's performance, Core Web Vitals, and get actionable optimization recommendations.</p>
-                </div>
-            </section>
-
-            <section class="main-tool-section">
-                <div class="container">
-                    <div class="main-tool-container">
-                        <div class="tool-header">
-                            <h2>Free Website Speed Test</h2>
-                            <p>Enter your website URL to check performance, Core Web Vitals, and get optimization tips.</p>
-                        </div>
-                        
-                        <div class="test-input-container">
-                            <input type="url" id="websiteUrl" class="test-input" placeholder="example.com or https://example.com">
-                            <button class="btn btn-primary btn-lg" id="startTest">Start Speed Test</button>
-                        </div>
-                        
-                        <div class="error-message" id="urlError">
-                            Please enter a valid website URL. Example: example.com or https://example.com
-                        </div>
-                        
-                        <div class="loading-container" id="loading">
-                            <div class="spinner"></div>
-                            <h3>Analyzing Website Performance</h3>
-                            <p>Testing from multiple locations and devices...</p>
-                            <p class="text-light mt-2"><small>Checking server response, Core Web Vitals, and mobile optimization</small></p>
-                        </div>
-                        
-                        <div class="results-container" id="results">
-                            <div class="performance-score">
-                                <div class="score-circle" id="scoreCircle" style="--score-color: #059669; --score-percent: 85;">
-                                    <span id="performanceScore">85</span>
-                                </div>
-                                <div class="score-text" id="performanceText">Good Performance</div>
-                                <p id="performanceDescription">Your website loads faster than 85% of tested websites. There are optimization opportunities available.</p>
-                            </div>
-                            
-                            <div class="section-header">
-                                <h3>Core Web Vitals Analysis</h3>
-                                <p>Google's user experience metrics that impact SEO rankings</p>
-                            </div>
-                            
-                            <div class="web-vitals-grid">
-                                <div class="vital-card">
-                                    <div class="vital-header">
-                                        <div class="vital-icon">⏱️</div>
-                                        <h4>LCP</h4>
-                                    </div>
-                                    <p>Largest Contentful Paint measures loading performance.</p>
-                                    <div class="vital-value vital-good" id="lcpValue">2.1s</div>
-                                    <p><strong>Status:</strong> Good (under 2.5s)</p>
-                                    <p class="text-light mt-2"><small>Target: &lt; 2.5 seconds</small></p>
-                                </div>
-                                
-                                <div class="vital-card">
-                                    <div class="vital-header">
-                                        <div class="vital-icon">📐</div>
-                                        <h4>CLS</h4>
-                                    </div>
-                                    <p>Cumulative Layout Shift measures visual stability.</p>
-                                    <div class="vital-value vital-good" id="clsValue">0.08</div>
-                                    <p><strong>Status:</strong> Good (under 0.1)</p>
-                                    <p class="text-light mt-2"><small>Target: &lt; 0.1</small></p>
-                                </div>
-                                
-                                <div class="vital-card">
-                                    <div class="vital-header">
-                                        <div class="vital-icon">🎯</div>
-                                        <h4>INP</h4>
-                                    </div>
-                                    <p>Interaction to Next Paint measures responsiveness.</p>
-                                    <div class="vital-value vital-good" id="inpValue">180ms</div>
-                                    <p><strong>Status:</strong> Good (under 200ms)</p>
-                                    <p class="text-light mt-2"><small>Target: &lt; 200 milliseconds</small></p>
-                                </div>
-                            </div>
-                            
-                            <div class="section-header">
-                                <h3>Performance by Device Type</h3>
-                                <p>Different experiences across mobile and desktop devices</p>
-                            </div>
-                            
-                            <div class="device-results">
-                                <div class="device-card">
-                                    <div class="device-icon">📱</div>
-                                    <h4>Mobile Performance</h4>
-                                    <p>Simulated 4G Connection (Slower Network)</p>
-                                    <div class="vital-value vital-average" id="mobileSpeed">3.4s</div>
-                                    <p><strong>Load Time</strong></p>
-                                    <p><strong>Performance Score:</strong> 72/100</p>
-                                    <p class="text-light mt-2"><small>Areas for improvement detected</small></p>
-                                </div>
-                                
-                                <div class="device-card">
-                                    <div class="device-icon">💻</div>
-                                    <h4>Desktop Performance</h4>
-                                    <p>Broadband Connection (Faster Network)</p>
-                                    <div class="vital-value vital-good" id="desktopSpeed">1.8s</div>
-                                    <p><strong>Load Time</strong></p>
-                                    <p><strong>Performance Score:</strong> 92/100</p>
-                                    <p class="text-light mt-2"><small>Excellent desktop performance</small></p>
-                                </div>
-                            </div>
-                            
-                            <!-- Affiliate Recommendation Section -->
-                            <div class="affiliate-section" id="affiliateSection">
-                                <div class="affiliate-logo">Bluehost</div>
-                                <h3>Optimize Your Website Hosting for Better Speed</h3>
-                                <p>Your speed test shows opportunities to improve server response time. Many performance issues start with hosting quality.</p>
-                                
-                                <div class="tips-grid mt-3">
-                                    <div class="tip-card">
-                                        <div class="tip-icon">⚡</div>
-                                        <div>
-                                            <h5>Built-in Caching</h5>
-                                            <p>Automatic caching for faster loading</p>
-                                        </div>
-                                    </div>
-                                    <div class="tip-card">
-                                        <div class="tip-icon">🌐</div>
-                                        <div>
-                                            <h5>Free CDN</h5>
-                                            <p>Global content delivery network</p>
-                                        </div>
-                                    </div>
-                                    <div class="tip-card">
-                                        <div class="tip-icon">💾</div>
-                                        <div>
-                                            <h5>SSD Storage</h5>
-                                            <p>Faster read/write speeds</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <p class="mt-3">Better hosting can improve load times significantly. Consider upgrading for optimal performance.</p>
-                                
-                                <div class="mt-4">
-                                    <a href="https://www.bluehost.com/affiliates?utm_source=speedtestpro&utm_medium=referral&utm_campaign=speed_test_tool" 
-                                       class="btn btn-primary btn-lg" 
-                                       target="_blank" 
-                                       rel="nofollow">
-                                        Explore Bluehost Plans
-                                    </a>
-                                </div>
-                                
-                                <p class="mt-3" style="font-size: 0.875rem; opacity: 0.9;">
-                                    <strong>Transparency:</strong> We may earn a commission if you choose to upgrade through our link, at no extra cost to you. This supports our free tools.
-                                </p>
-                            </div>
-                            
-                            <div class="optimization-tips">
-                                <div class="section-header">
-                                    <h3>Optimization Recommendations</h3>
-                                    <p>Actionable tips to improve your website performance</p>
-                                </div>
-                                
-                                <div class="tips-grid" id="optimizationTips">
-                                    <!-- Tips will be populated by JavaScript -->
-                                </div>
-                                
-                                <div class="mt-4 text-center">
-                                    <p><strong>Transparency Note:</strong> Results shown are estimated and for informational purposes. Actual website performance may vary based on real-world conditions.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="text-center mt-5">
-                                <button class="btn btn-outline" id="runNewTest">
-                                    <span>🔄</span> Test Another Website
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
         <!-- About Page -->
         <div class="page" id="about">
             <section class="hero">
@@ -1500,7 +1486,7 @@
                         <p>We're particularly mindful of users in regions with slower internet connections, as website speed is even more critical in these areas. Our mobile testing simulations reflect real-world conditions that users face globally.</p>
                         
                         <div class="mt-4">
-                            <a href="#" class="btn btn-primary" data-page="speed-test">Try Our Speed Test Tool</a>
+                            <a href="#" class="btn btn-primary" data-page="home">Try Our Speed Test Tool</a>
                         </div>
                     </div>
                     
@@ -2058,9 +2044,9 @@
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="#" data-page="home">Home</a></li>
-                        <li><a href="#" data-page="speed-test">Speed Test Tool</a></li>
                         <li><a href="#" data-page="about">About Us</a></li>
                         <li><a href="#" data-page="faq">FAQ</a></li>
+                        <li><a href="#" data-page="contact">Contact</a></li>
                     </ul>
                 </div>
                 
@@ -2248,8 +2234,8 @@
                 mobileOverlay.classList.remove('active');
                 document.body.style.overflow = '';
                 
-                // If navigating to speed test page, focus on input
-                if (pageId === 'speed-test') {
+                // If navigating to home page, focus on input
+                if (pageId === 'home') {
                     setTimeout(() => {
                         const urlInput = document.getElementById('websiteUrl');
                         if (urlInput) urlInput.focus();
@@ -2682,9 +2668,9 @@
             // Initialize tool
             console.log('SpeedTest Pro initialized. All pages and features are ready.');
             
-            // Check if we're on the speed test page
-            if (window.location.hash === '#speed-test') {
-                navigateToPage('speed-test');
+            // Check if we're on the home page
+            if (window.location.hash === '#home') {
+                navigateToPage('home');
             }
         });
         

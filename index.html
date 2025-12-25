@@ -227,8 +227,7 @@
             font-size: clamp(0.875rem, 2.5vw, 1rem);
             text-align: center;
             gap: 0.5rem;
-            width: 100%;
-            max-width: 100%;
+            white-space: nowrap;
         }
         
         .btn-primary {
@@ -486,6 +485,20 @@
             .test-input-container {
                 flex-direction: row;
             }
+            
+            .test-input-container .test-input {
+                flex: 1;
+                min-width: 0;
+                font-size: 1.125rem;
+                padding: 1.125rem 1.5rem;
+            }
+            
+            .test-input-container .btn {
+                width: auto;
+                min-width: 180px;
+                font-size: 1.125rem;
+                padding: 1.125rem 2rem;
+            }
         }
         
         .test-input {
@@ -500,6 +513,14 @@
             width: 100%;
             max-width: 100%;
             -webkit-appearance: none;
+            font-size: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .test-input {
+                font-size: 1.125rem;
+                padding: 1.125rem 1.75rem;
+            }
         }
         
         .test-input:focus {
@@ -1164,6 +1185,42 @@
                 width: 100px;
                 height: 100px;
                 font-size: 1.75rem;
+            }
+        }
+        
+        /* ===== DESKTOP SPECIFIC FIXES ===== */
+        @media (min-width: 768px) {
+            .test-input-container {
+                gap: 0.75rem;
+            }
+            
+            .test-input {
+                flex: 1;
+                min-width: 0;
+                font-size: 1.125rem;
+                padding: 1.125rem 1.75rem;
+                height: auto;
+            }
+            
+            .test-input-container .btn {
+                width: auto;
+                min-width: 200px;
+                font-size: 1.125rem;
+                padding: 1.125rem 2.5rem;
+                white-space: nowrap;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .test-input {
+                font-size: 1.25rem;
+                padding: 1.25rem 2rem;
+            }
+            
+            .test-input-container .btn {
+                font-size: 1.25rem;
+                padding: 1.25rem 3rem;
+                min-width: 220px;
             }
         }
         
